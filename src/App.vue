@@ -1,5 +1,27 @@
 <script setup>
-import { ClockIcon, CheckCircleIcon } from '@heroicons/vue/24/solid'
+import { ref } from 'vue'
+import { ClockIcon, CheckCircleIcon, ListBulletIcon, ChartBarIcon } from '@heroicons/vue/24/solid'
+
+let menuList = ref([
+  {
+    title: 'timeline',
+    icon: 'ClockIcon',
+  },
+  {
+    title: 'activities',
+    icon: 'ListBulletIcon',
+  },
+  {
+    title: 'progress',
+    icon: 'ChartBarIcon',
+  },
+])
+
+const iconComponents = {
+  ClockIcon,
+  ListBulletIcon,
+  ChartBarIcon,
+}
 </script>
 
 <template>
@@ -22,30 +44,15 @@ import { ClockIcon, CheckCircleIcon } from '@heroicons/vue/24/solid'
       </div>
     </a>
   </header>
-  <main>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae fugiat culpa blanditiis
-    repellat quo placeat ipsum iste incidunt aliquam, iusto sint nobis ex fuga quae architecto
-    laboriosam earum necessitatibus rem! Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-    Molestiae fugiat culpa blanditiis repellat quo placeat ipsum iste incidunt aliquam, iusto sint
-    nobis ex fuga quae architecto laboriosam earum necessitatibus rem! Lorem, ipsum dolor sit amet
-    consectetur adipisicing elit. Molestiae fugiat culpa blanditiis repellat quo placeat ipsum iste
-    incidunt aliquam, iusto sint nobis ex fuga quae architecto laboriosam earum necessitatibus rem!
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae fugiat culpa blanditiis
-    repellat quo placeat ipsum iste incidunt aliquam, iusto sint nobis ex fuga quae architecto
-    laboriosam earum necessitatibus rem! Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-    Molestiae fugiat culpa blanditiis repellat quo placeat ipsum iste incidunt aliquam, iusto sint
-    nobis ex fuga quae architecto laboriosam earum necessitatibus rem! Lorem, ipsum dolor sit amet
-    consectetur adipisicing elit. Molestiae fugiat culpa blanditiis repellat quo placeat ipsum iste
-    incidunt aliquam, iusto sint nobis ex fuga quae architecto laboriosam earum necessitatibus rem!
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae fugiat culpa blanditiis
-    repellat quo placeat ipsum iste incidunt aliquam, iusto sint nobis ex fuga quae architecto
-    laboriosam earum necessitatibus rem! Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-    Molestiae fugiat culpa blanditiis repellat quo placeat ipsum iste incidunt aliquam, iusto sint
-    nobis ex fuga quae architecto laboriosam earum necessitatibus rem! Lorem, ipsum dolor sit amet
-    consectetur adipisicing elit. Molestiae fugiat culpa blanditiis repellat quo placeat ipsum iste
-    incidunt aliquam, iusto sint nobis ex fuga quae architecto laboriosam earum necessitatibus rem!
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae fugiat culpa blanditiis
-    repellat quo placeat ipsum iste incidunt aliquam, iusto sint nobis ex fuga quae architecto
-    laboriosam earum necessitatibus rem!
-  </main>
+  <main class="flex flex-grow flex-col"></main>
+
+  <nav class="sticky bottom-0 bg-white border-t border-gray-400">
+    <ul class="flex items-center justify-around">
+      <li v-for="el in menuList" :key="el.title" class="flex-1 border border-gray-400">
+        <a :href="`#${el.title}`" class="flex flex-col items-center capitalize font-medium p-2">
+          <component class="h-6 w-6" :is="iconComponents[el.icon]"></component>{{ el.title }}
+        </a>
+      </li>
+    </ul>
+  </nav>
 </template>
