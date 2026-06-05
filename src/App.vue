@@ -20,10 +20,17 @@ function normalizeHash() {
 
   return PAGE_TIMELINE
 }
+
+function routeTo(page) {
+  currentPage.value = page
+}
 </script>
 
 <template>
-  <TheHeader />
+  <TheHeader
+    @route-to-timeline="routeTo(PAGE_TIMELINE)"
+    @route-to-progress="routeTo(PAGE_PROGRESS)"
+  />
 
   <main class="flex flex-grow flex-col">
     <TheTimeline v-show="currentPage === PAGE_TIMELINE" />

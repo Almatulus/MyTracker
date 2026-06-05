@@ -1,16 +1,19 @@
 <script setup>
 import { ClockIcon, CheckCircleIcon } from '@heroicons/vue/24/solid'
+import { PAGE_TIMELINE, PAGE_PROGRESS } from '@/pageConstants'
+
+const emit = defineEmits(['routeToTimeline', 'routeToProgress'])
 </script>
 
 <template>
   <header
     class="sticky top-0 z-50 flex items-center justify-between p-2 border-b border-gray-400 bg-white"
   >
-    <a href="#" class="flex items-center">
+    <a :href="`#${PAGE_TIMELINE}`" class="flex items-center" @click="emit('routeToTimeline')">
       <ClockIcon class="w-10" />
       <p class="font-semibold">MyTracker</p>
     </a>
-    <a href="#" class="text-sm">
+    <a :href="`#${PAGE_PROGRESS}`" class="text-sm" @click="emit('routeToProgress')">
       <div v-if="true" class="flex items-center gap-1 font-medium">
         Day complete!
         <CheckCircleIcon class="h-7 text-green-500" />

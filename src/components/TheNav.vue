@@ -10,16 +10,6 @@ const menuList = ref({
   [PAGE_PROGRESS]: ChartBarIcon,
 })
 
-// defineProps({
-//   currentPage: {
-//     type: String,
-//     required: true,
-//     default: 'timeline',
-//   },
-// })
-
-// const emit = defineEmits(['navigate'])
-
 const currentPage = defineModel({
   type: String,
   required: true,
