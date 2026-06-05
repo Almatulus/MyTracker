@@ -10,19 +10,15 @@ const menuList = ref({
   [PAGE_PROGRESS]: ChartBarIcon,
 })
 
-const currentPage = ref(normalizeHash())
+defineProps({
+  currentPage: {
+    type: String,
+    required: true,
+    default: 'timeline',
+  },
+})
 
-function normalizeHash() {
-  const hash = window.location.hash.slice(1)
-
-  if (Object.keys(menuList).includes(hash)) {
-    return hash
-  }
-
-  window.location.hash = PAGE_TIMELINE
-
-  return PAGE_TIMELINE
-}
+const emit = defineEmits(['navigate'])
 </script>
 
 <template>
@@ -33,7 +29,7 @@ function normalizeHash() {
         :key="page"
         :href="`#${page}`"
         :class="{ 'bg-slate-300 pointer-events-none': page === currentPage }"
-        @click="currentPage = page"
+        @click="emit('navigate', page)"
       >
         <component class="h-6 w-6" :is="icon"></component>{{ page }}
       </NavItem>
