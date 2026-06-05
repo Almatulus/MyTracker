@@ -31,5 +31,5 @@ function normalizeHash() {
     <TheProgress v-show="currentPage === PAGE_PROGRESS" />
   </main>
 
-  <TheNav :current-page="currentPage" @navigate="currentPage = $event" />
+  <TheNav v-model="currentPage" />
 </template>

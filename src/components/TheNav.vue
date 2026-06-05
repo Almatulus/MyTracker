@@ -10,15 +10,20 @@ const menuList = ref({
   [PAGE_PROGRESS]: ChartBarIcon,
 })
 
-defineProps({
-  currentPage: {
-    type: String,
-    required: true,
-    default: 'timeline',
-  },
-})
+// defineProps({
+//   currentPage: {
+//     type: String,
+//     required: true,
+//     default: 'timeline',
+//   },
+// })
 
-const emit = defineEmits(['navigate'])
+// const emit = defineEmits(['navigate'])
+
+const currentPage = defineModel({
+  type: String,
+  required: true,
+})
 </script>
 
 <template>
@@ -29,7 +34,7 @@ const emit = defineEmits(['navigate'])
         :key="page"
         :href="`#${page}`"
         :class="{ 'bg-slate-300 pointer-events-none': page === currentPage }"
-        @click="emit('navigate', page)"
+        @click="currentPage = page"
       >
         <component class="h-6 w-6" :is="icon"></component>{{ page }}
       </NavItem>
