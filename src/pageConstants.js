@@ -9,3 +9,5 @@ export const MENU_LIST = {
   [PAGE_ACTIVITIES]: ListBulletIcon,
   [PAGE_PROGRESS]: ChartBarIcon,
 }
+
+export const HOURS_PER_DAY = 24
