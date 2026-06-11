@@ -14,7 +14,7 @@ export function normalizeHash() {
 
 export function generateTimeItems() {
   const timeItems = []
-  for (let hour = 0; hour <= HOURS_PER_DAY; hour++) {
+  for (let hour = 0; hour < HOURS_PER_DAY; hour++) {
     timeItems.push({ hour })
   }
 

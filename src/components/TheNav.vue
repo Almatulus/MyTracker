@@ -1,10 +1,12 @@
 <script setup>
-import { MENU_LIST } from '@/pageConstants.js'
 import NavItem from './NavItem.vue'
+import { isPageValid } from '@/validators.js'
+import { MENU_LIST } from '@/pageConstants.js'
 
 const currentPage = defineModel({
   type: String,
   required: true,
+  validator: isPageValid,
 })
 </script>
 

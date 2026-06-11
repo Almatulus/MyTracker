@@ -1,11 +1,13 @@
 <script setup>
 import { ref } from 'vue'
 import VSelect from './VSelect.vue'
+import { isTimeLineItemValid } from '@/validators.js'
 
 const props = defineProps({
   timelineItem: {
     type: Object,
     required: true,
+    validator: isTimeLineItemValid,
   },
 })
 
