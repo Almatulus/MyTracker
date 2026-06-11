@@ -18,10 +18,7 @@ function routeTo(page) {
 </script>
 
 <template>
-  <TheHeader
-    @route-to-timeline="routeTo(PAGE_TIMELINE)"
-    @route-to-progress="routeTo(PAGE_PROGRESS)"
-  />
+  <TheHeader @navigate="routeTo($event)" />
 
   <main class="flex flex-grow flex-col">
     <TheTimeline v-show="currentPage === PAGE_TIMELINE" :timeline-items="timeItems" />
