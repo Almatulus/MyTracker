@@ -1,14 +1,12 @@
 <script setup>
 import TimelineItem from '@/components/TimelineItem.vue'
-import { isTimeLineItemValid } from '@/validators'
+import { validateTimeLineItems } from '@/validators'
 
 defineProps({
   timelineItems: {
     type: Array,
     required: true,
-    validator: (timelineItems) => {
-      return timelineItems.every(isTimeLineItemValid)
-    },
+    validator: validateTimeLineItems,
   },
 })
 </script>

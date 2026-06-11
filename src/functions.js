@@ -1,4 +1,4 @@
-import { PAGE_TIMELINE, HOURS_PER_DAY, MIDNIGHT_HOUR } from './pageConstants.js'
+import { PAGE_TIMELINE, HOURS_PER_DAY } from './pageConstants.js'
 import { isPageValid } from './validators.js'
 
 export function normalizeHash() {
