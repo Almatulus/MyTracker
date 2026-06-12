@@ -12,28 +12,22 @@ defineProps({
   placeholder: {
     type: String,
   },
-  selected: {
-    type: Number,
-    required: true,
-  },
 })
 
-const model = defineModel()
+const model = defineModel({
+  type: [Number, String],
+  default: '',
+})
 </script>
 
 <template>
   <div class="flex gap-2">
-    <VButton type="negative">
+    <VButton type="negative" @click="model = null">
       <XMarkIcon class="h-8" />
     </VButton>
-    <select class="w-full truncate rounded bg-gray-200 py-1 px-2 text-xl">
-      <option selected disabled>{{ placeholder }}</option>
-      <option
-        v-for="{ value, label } in options"
-        :key="value"
-        :value="value"
-        :selected="value === selected"
-      >
+    <select v-model="model" class="w-full truncate rounded bg-gray-200 py-1 px-2 text-xl">
+      <option :value="null" disabled selected>{{ placeholder }}</option>
+      <option v-for="{ value, label } in options" :key="value" :value="value">
         {{ label }}
       </option>
     </select>

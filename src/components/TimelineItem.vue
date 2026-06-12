@@ -23,12 +23,12 @@ const options = [
   { value: 2, label: 'Reading' },
 ]
 
-let selectedId = ref(3)
+let selectedId = ref(null)
 </script>
 
 <template>
   <li class="relative flex flex-col gap-2 border-t border-gray-200 py-10 px-4">
-    <VSelect :options="options" placeholder="Rest" :selected="selectedId" />
+    <VSelect v-model="selectedId" :options="options" placeholder="Rest" />
     <a href="#" :class="linkClasses"> {{ timelineItem.hour }}:00 </a>
   </li>
 </template>

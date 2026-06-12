@@ -1,5 +1,6 @@
 import { PAGE_TIMELINE, HOURS_PER_DAY } from './pageConstants.js'
 import { isPageValid } from './validators.js'
+import { MIDNIGHT_HOUR } from './pageConstants.js'
 
 export function normalizeHash() {
   const page = window.location.hash.slice(1)
