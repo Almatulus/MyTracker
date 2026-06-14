@@ -1,8 +1,7 @@
 <script setup>
 import { XMarkIcon } from '@heroicons/vue/24/solid'
 import VButton from './VButton.vue'
-import { isNumber, validateSelectOptions } from '@/validators.js'
-import { computed } from 'vue'
+import { isNumberOrNull, validateSelectOptions } from '@/validators.js'
 
 defineProps({
   options: {
@@ -16,9 +15,9 @@ defineProps({
 })
 
 const model = defineModel({
-  type: Number,
+  type: [Number, null],
   required: true,
-  validator: isNumber,
+  validator: isNumberOrNull,
 })
 </script>
 

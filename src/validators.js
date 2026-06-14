@@ -9,7 +9,7 @@ export function validateTimeLineItems(timelineItems) {
 }
 
 export function isTimeLineItemValid({ hour }) {
-  return isNumber(hour) && isBetween(hour, MIDNIGHT_HOUR, HOURS_PER_DAY - 1)
+  return isHourValid(hour)
 }
 
 export function validateSelectOptions(options) {
@@ -18,6 +18,14 @@ export function validateSelectOptions(options) {
 
 function isSelectOptionValid({ value, label }) {
   return isNumber(value) && isString(label)
+}
+
+export function isHourValid(value) {
+  return isNumber(value) && isBetween(value, MIDNIGHT_HOUR, HOURS_PER_DAY - 1)
+}
+
+export function isNumberOrNull(value) {
+  return isNumber(value) || isNull(value)
 }
 
 export function isNumber(value) {
@@ -30,4 +38,8 @@ function isString(value) {
 
 function isBetween(value, start, end) {
   return value >= start && value <= end
+}
+
+function isNull(value) {
+  return value === null
 }

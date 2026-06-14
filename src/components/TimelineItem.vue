@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import VSelect from './VSelect.vue'
 import { isTimeLineItemValid } from '@/validators.js'
+import TimelineHour from './TimelineHour.vue'
 
 const props = defineProps({
   timelineItem: {
@@ -10,13 +11,6 @@ const props = defineProps({
     validator: isTimeLineItemValid,
   },
 })
-
-const linkClasses = [
-  'absolute -top-4 left-1/2 -translate-x-1/2 rounded  px-2  font-mono',
-  props.timelineItem.hour === new Date().getHours()
-    ? 'bg-purple-500 text-white font-bold text-lg'
-    : 'bg-gray-100 text-grey-500',
-]
 
 const options = [
   { value: 1, label: 'Coding' },
@@ -29,6 +23,6 @@ let selectedId = ref(null)
 <template>
   <li class="relative flex flex-col gap-2 border-t border-gray-200 py-10 px-4">
     <VSelect v-model="selectedId" :options="options" placeholder="Rest" />
-    <a href="#" :class="linkClasses"> {{ timelineItem.hour }}:00 </a>
+    <TimelineHour :hour="props.timelineItem.hour" />
   </li>
 </template>
