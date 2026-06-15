@@ -1,4 +1,4 @@
-<script setup>
+<script>
 import {
   BUTTON_TYPE_NEUTRAL,
   BUTTON_TYPE_PRIMARY,
@@ -6,22 +6,24 @@ import {
   BUTTON_TYPE_NEGATIVE,
 } from '@/pageConstants'
 
-import { isButtonTypeValid } from '@/validators'
-
-defineProps({
-  type: {
-    type: String,
-    default: 'primary',
-    validator: isButtonTypeValid,
-  },
-})
-
 const buttonType = {
   [BUTTON_TYPE_NEUTRAL]: 'bg-gray-300',
   [BUTTON_TYPE_PRIMARY]: 'bg-blue-400 text-white',
   [BUTTON_TYPE_NEGATIVE]: 'bg-red-400 text-white',
   [BUTTON_TYPE_DANGER]: 'bg-yellow-400 text-black',
 }
+</script>
+
+<script setup>
+import { isButtonTypeValid } from '@/validators'
+
+defineProps({
+  type: {
+    type: String,
+    default: BUTTON_TYPE_NEUTRAL,
+    validator: isButtonTypeValid,
+  },
+})
 </script>
 
 <template>

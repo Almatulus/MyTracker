@@ -5,7 +5,7 @@ export function isPageValid(page) {
 }
 
 export function isButtonTypeValid(type) {
-  return Object.keys(BUTTON_TYPES).includes(type)
+  return BUTTON_TYPES.includes(type)
 }
 
 export function validateTimeLineItems(timelineItems) {
