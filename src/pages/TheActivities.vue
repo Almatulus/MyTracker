@@ -1,7 +1,14 @@
 <script setup>
 import ActivitiesItem from '@/components/ActivitiesItem.vue'
+import { validateActivityItems } from '@/validators'
 
-const activities = ['Coding', 'Training', 'Reading']
+defineProps({
+  activities: {
+    type: Array,
+    required: true,
+    validator: validateActivityItems,
+  },
+})
 </script>
 
 <template>

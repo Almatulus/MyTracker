@@ -12,6 +12,14 @@ export function isTimeLineItemValid({ hour }) {
   return isHourValid(hour)
 }
 
+export function validateActivityItems(activities) {
+  return activities.every(isActivityItemValid)
+}
+
+export function isActivityItemValid(activity) {
+  return isString(activity) && isNotEmpty(activity)
+}
+
 export function validateSelectOptions(options) {
   return options.every(isSelectOptionValid)
 }
@@ -42,4 +50,8 @@ function isBetween(value, start, end) {
 
 function isNull(value) {
   return value === null
+}
+
+function isNotEmpty(value) {
+  return value.length > 0
 }

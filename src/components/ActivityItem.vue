@@ -3,19 +3,16 @@ import { ref } from 'vue'
 import { TrashIcon } from '@heroicons/vue/24/solid'
 import VButton from '@/components/VButton.vue'
 import VSelect from '@/components/VSelect.vue'
+import { ACTIVITY_SELECT_OPTIONS } from '@/pageConstants'
+import { isActivityItemValid } from '@/validators'
 
 defineProps({
   activity: {
     required: true,
     type: String,
+    validator: isActivityItemValid,
   },
 })
-
-const periodOptions = [
-  { value: 15, label: '0:15' },
-  { value: 30, label: '0:30' },
-  { value: 45, label: '0:45' },
-]
 
 const secondsToComplete = ref(null)
 </script>
@@ -33,7 +30,7 @@ const secondsToComplete = ref(null)
         v-model="secondsToComplete"
         class="font-mono"
         placeholder="h:mm"
-        :options="periodOptions"
+        :options="ACTIVITY_SELECT_OPTIONS"
       ></VSelect>
     </div>
   </li>

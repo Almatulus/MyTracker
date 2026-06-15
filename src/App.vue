@@ -12,6 +12,8 @@ const currentPage = ref(normalizeHash())
 
 const timeItems = generateTimeItems()
 
+const activities = ['Coding', 'Training', 'Reading']
+
 function routeTo(page) {
   currentPage.value = page
 }
@@ -22,7 +24,7 @@ function routeTo(page) {
 
   <main class="flex flex-grow flex-col">
     <TheTimeline v-show="currentPage === PAGE_TIMELINE" :timeline-items="timeItems" />
-    <TheActivitites v-show="currentPage === PAGE_ACTIVITIES" />
+    <TheActivitites v-show="currentPage === PAGE_ACTIVITIES" :activities="activities" />
     <TheProgress v-show="currentPage === PAGE_PROGRESS" />
   </main>
 
