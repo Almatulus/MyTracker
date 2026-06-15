@@ -1,5 +1,5 @@
 <script setup>
-import ActivitiesItem from '@/components/ActivitiesItem.vue'
+import ActivitiesItem from '@/components/ActivityItem.vue'
 import { validateActivityItems } from '@/validators'
 
 defineProps({
