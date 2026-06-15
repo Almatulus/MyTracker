@@ -2,6 +2,7 @@
 import { XMarkIcon } from '@heroicons/vue/24/solid'
 import VButton from './VButton.vue'
 import { isNumberOrNull, validateSelectOptions } from '@/validators.js'
+import { BUTTON_TYPE_NEGATIVE } from '@/pageConstants.js'
 
 defineProps({
   options: {
@@ -29,7 +30,7 @@ const model = defineModel({
         {{ label }}
       </option>
     </select>
-    <VButton type="negative" @click="model = null">
+    <VButton :type="BUTTON_TYPE_NEGATIVE" @click="model = null">
       <XMarkIcon class="h-8" />
     </VButton>
   </div>

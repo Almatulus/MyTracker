@@ -1,15 +1,26 @@
 <script setup>
+import {
+  BUTTON_TYPE_NEUTRAL,
+  BUTTON_TYPE_PRIMARY,
+  BUTTON_TYPE_DANGER,
+  BUTTON_TYPE_NEGATIVE,
+} from '@/pageConstants'
+
+import { isButtonTypeValid } from '@/validators'
+
 defineProps({
   type: {
     type: String,
     default: 'primary',
+    validator: isButtonTypeValid,
   },
 })
 
 const buttonType = {
-  primary: 'bg-blue-400 text-white',
-  negative: 'bg-red-400 text-white',
-  danger: 'bg-yellow-400 text-black',
+  [BUTTON_TYPE_NEUTRAL]: 'bg-gray-300',
+  [BUTTON_TYPE_PRIMARY]: 'bg-blue-400 text-white',
+  [BUTTON_TYPE_NEGATIVE]: 'bg-red-400 text-white',
+  [BUTTON_TYPE_DANGER]: 'bg-yellow-400 text-black',
 }
 </script>
 
