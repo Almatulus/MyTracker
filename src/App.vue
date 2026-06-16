@@ -5,7 +5,7 @@ import TheNav from './components/TheNav.vue'
 import TheTimeline from './pages/TheTimeline.vue'
 import TheActivitites from './pages/TheActivities.vue'
 import TheProgress from './pages/TheProgress.vue'
-import { normalizeHash, generateTimeItems } from './functions.js'
+import { normalizeHash, generateTimeItems, generateActivitySelectOptions } from './functions.js'
 import { PAGE_PROGRESS, PAGE_TIMELINE, PAGE_ACTIVITIES } from './pageConstants.js'
 
 const currentPage = ref(normalizeHash())
@@ -17,13 +17,19 @@ const activities = ['Coding', 'Training', 'Reading']
 function routeTo(page) {
   currentPage.value = page
 }
+
+const activitySelectOptions = generateActivitySelectOptions(activities)
 </script>
 
 <template>
   <TheHeader @navigate="routeTo($event)" />
 
   <main class="flex flex-grow flex-col">
-    <TheTimeline v-show="currentPage === PAGE_TIMELINE" :timeline-items="timeItems" />
+    <TheTimeline
+      v-show="currentPage === PAGE_TIMELINE"
+      :timeline-items="timeItems"
+      :activity-select-options="activitySelectOptions"
+    />
     <TheActivitites v-show="currentPage === PAGE_ACTIVITIES" :activities="activities" />
     <TheProgress v-show="currentPage === PAGE_PROGRESS" />
   </main>

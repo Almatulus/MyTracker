@@ -22,3 +22,9 @@ export function generateTimeItems() {
 
   return timeItems
 }
+
+export function generateActivitySelectOptions(activities) {
+  return activities.map((label, value) => {
+    return { label, value }
+  })
+}
