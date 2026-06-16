@@ -59,3 +59,7 @@ function isNull(value) {
 function isNotEmpty(value) {
   return value.length > 0
 }
+
+export function isUndefined(value) {
+  return value === undefined
+}

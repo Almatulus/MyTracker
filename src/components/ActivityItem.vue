@@ -4,7 +4,7 @@ import { TrashIcon } from '@heroicons/vue/24/solid'
 import VButton from '@/components/VButton.vue'
 import VSelect from '@/components/VSelect.vue'
 import { ACTIVITY_SELECT_OPTIONS } from '@/pageConstants'
-import { isActivityItemValid } from '@/validators'
+import { isActivityItemValid, isUndefined } from '@/validators'
 
 defineProps({
   activity: {
@@ -14,6 +14,10 @@ defineProps({
   },
 })
 
+const emit = defineEmits({
+  delete: isUndefined,
+})
+
 const secondsToComplete = ref(null)
 </script>
 
@@ -21,7 +25,7 @@ const secondsToComplete = ref(null)
   <li class="flex flex-col column gap-3 py-4">
     <div class="flex items-center justify-between">
       <span class="truncate text-l">{{ activity }}</span>
-      <VButton type="negative" class="p-1">
+      <VButton @click="emit('delete')" type="negative" class="p-1">
         <TrashIcon class="h-6" />
       </VButton>
     </div>

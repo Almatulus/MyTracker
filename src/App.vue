@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { reactive, ref } from 'vue'
 import TheHeader from './components/TheHeader.vue'
 import TheNav from './components/TheNav.vue'
 import TheTimeline from './pages/TheTimeline.vue'
@@ -12,13 +12,17 @@ const currentPage = ref(normalizeHash())
 
 const timeItems = generateTimeItems()
 
-const activities = ['Coding', 'Training', 'Reading']
+const activities = reactive(['Coding', 'Training', 'Reading'])
 
 function routeTo(page) {
   currentPage.value = page
 }
 
 const activitySelectOptions = generateActivitySelectOptions(activities)
+
+function deleteActivity(activity) {
+  activities.splice(activities.indexOf(activity), 1)
+}
 </script>
 
 <template>
@@ -30,7 +34,11 @@ const activitySelectOptions = generateActivitySelectOptions(activities)
       :timeline-items="timeItems"
       :activity-select-options="activitySelectOptions"
     />
-    <TheActivitites v-show="currentPage === PAGE_ACTIVITIES" :activities="activities" />
+    <TheActivitites
+      @delete-activity="deleteActivity"
+      v-show="currentPage === PAGE_ACTIVITIES"
+      :activities="activities"
+    />
     <TheProgress v-show="currentPage === PAGE_PROGRESS" />
   </main>
 
