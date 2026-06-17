@@ -20,6 +20,10 @@ function routeTo(page) {
 
 const activitySelectOptions = generateActivitySelectOptions(activities)
 
+function createActivity(activity) {
+  activities.push(activity)
+}
+
 function deleteActivity(activity) {
   activities.splice(activities.indexOf(activity), 1)
 }
@@ -35,6 +39,7 @@ function deleteActivity(activity) {
       :activity-select-options="activitySelectOptions"
     />
     <TheActivitites
+      @create-activity="createActivity"
       @delete-activity="deleteActivity"
       v-show="currentPage === PAGE_ACTIVITIES"
       :activities="activities"

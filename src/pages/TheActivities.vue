@@ -1,4 +1,5 @@
 <script setup>
+import { ref } from 'vue'
 import ActivitiesItem from '@/components/ActivityItem.vue'
 import { validateActivityItems, isActivityItemValid } from '@/validators'
 import { PlusIcon } from '@heroicons/vue/24/solid'
@@ -14,8 +15,11 @@ defineProps({
 })
 
 const emit = defineEmits({
+  createActivity: isActivityItemValid,
   deleteActivity: isActivityItemValid,
 })
+
+const newActivity = ref('')
 </script>
 
 <template>
@@ -29,13 +33,17 @@ const emit = defineEmits({
       />
     </ul>
 
-    <form class="sticky bottom-[64px] flex gap-2 border-t bg-white py-2">
+    <form
+      @submit.prevent="emit('createActivity', newActivity)"
+      class="sticky bottom-[64px] flex gap-2 border-t bg-white py-2"
+    >
       <input
+        v-model="newActivity"
         type="text"
         placeholder="Type action name"
         class="w-full p-1 outline rounded text-md"
       />
-      <VButton :type="BUTTON_TYPE_PRIMARY">
+      <VButton :type="BUTTON_TYPE_PRIMARY" :disabled="!newActivity">
         <PlusIcon class="h-8" />
       </VButton>
     </form>
