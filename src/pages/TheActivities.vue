@@ -2,9 +2,7 @@
 import { ref } from 'vue'
 import ActivitiesItem from '@/components/ActivityItem.vue'
 import { validateActivityItems, isActivityItemValid } from '@/validators'
-import { PlusIcon } from '@heroicons/vue/24/solid'
-import VButton from '@/components/VButton.vue'
-import { BUTTON_TYPE_PRIMARY } from '@/pageConstants'
+import TheActivityForm from '@/components/TheActivityForm.vue'
 
 defineProps({
   activities: {
@@ -18,8 +16,6 @@ const emit = defineEmits({
   createActivity: isActivityItemValid,
   deleteActivity: isActivityItemValid,
 })
-
-const newActivity = ref('')
 </script>
 
 <template>
@@ -33,19 +29,6 @@ const newActivity = ref('')
       />
     </ul>
 
-    <form
-      @submit.prevent="emit('createActivity', newActivity)"
-      class="sticky bottom-[64px] flex gap-2 border-t bg-white py-2"
-    >
-      <input
-        v-model="newActivity"
-        type="text"
-        placeholder="Type action name"
-        class="w-full p-1 outline rounded text-md"
-      />
-      <VButton :type="BUTTON_TYPE_PRIMARY" :disabled="!newActivity">
-        <PlusIcon class="h-8" />
-      </VButton>
-    </form>
+    <TheActivityForm @submit="emit('createActivity', $event)" />
   </div>
 </template>
