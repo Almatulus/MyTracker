@@ -21,7 +21,6 @@ function routeTo(page) {
 const activitySelectOptions = generateActivitySelectOptions(activities)
 
 function createActivity(activity) {
-  console.log(activity)
   activities.push(activity)
 }
 

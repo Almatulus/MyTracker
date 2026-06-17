@@ -13,6 +13,7 @@ const activity = ref('')
 
 function submit() {
   emit('submit', activity.value)
+  activity.value = ''
 }
 </script>
 
@@ -22,9 +23,9 @@ function submit() {
       v-model="activity"
       type="text"
       placeholder="Type action name"
-      class="w-full p-1 outline rounded text-md"
+      class="w-full p-1 outline rounded text-md focus:outline-blue-500"
     />
-    <VButton :type="BUTTON_TYPE_PRIMARY" :disabled="!activity">
+    <VButton :type="BUTTON_TYPE_PRIMARY" :disabled="!activity.trim()">
       <PlusIcon class="h-8" />
     </VButton>
   </form>
