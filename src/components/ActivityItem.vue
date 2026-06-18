@@ -9,7 +9,7 @@ import { isActivityItemValid, isUndefined } from '@/validators'
 defineProps({
   activity: {
     required: true,
-    type: String,
+    type: Object,
     validator: isActivityItemValid,
   },
 })
@@ -24,7 +24,7 @@ const secondsToComplete = ref(null)
 <template>
   <li class="flex flex-col column gap-3 py-4">
     <div class="flex items-center justify-between">
-      <span class="truncate text-l">{{ activity }}</span>
+      <span class="truncate text-l">{{ activity.name }}</span>
       <VButton @click="emit('delete')" type="negative" class="p-1">
         <TrashIcon class="h-6" />
       </VButton>

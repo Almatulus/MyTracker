@@ -5,14 +5,19 @@ import TheNav from './components/TheNav.vue'
 import TheTimeline from './pages/TheTimeline.vue'
 import TheActivitites from './pages/TheActivities.vue'
 import TheProgress from './pages/TheProgress.vue'
-import { normalizeHash, generateTimeItems, generateActivitySelectOptions } from './functions.js'
+import {
+  normalizeHash,
+  generateTimeItems,
+  generateActivitySelectOptions,
+  generateActivities,
+} from './functions.js'
 import { PAGE_PROGRESS, PAGE_TIMELINE, PAGE_ACTIVITIES } from './pageConstants.js'
 
 const currentPage = ref(normalizeHash())
 
 const timeItems = generateTimeItems()
 
-const activities = reactive(['Coding', 'Training', 'Reading'])
+const activities = reactive(generateActivities())
 
 function routeTo(page) {
   currentPage.value = page

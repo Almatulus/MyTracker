@@ -1,6 +1,5 @@
-import { PAGE_TIMELINE, HOURS_PER_DAY } from './pageConstants.js'
+import { PAGE_TIMELINE, HOURS_PER_DAY, MIDNIGHT_HOUR, SECONDS_IN_HOUR } from './pageConstants.js'
 import { isPageValid } from './validators.js'
-import { MIDNIGHT_HOUR } from './pageConstants.js'
 
 export function normalizeHash() {
   const page = window.location.hash.slice(1)
@@ -14,6 +13,20 @@ export function normalizeHash() {
   return PAGE_TIMELINE
 }
 
+export function generateActivities() {
+  return ['Coding', 'Reading', 'Hiding'].map((name, hours) => {
+    return {
+      id: generateId(),
+      name: name,
+      secondsToComplete: hours * SECONDS_IN_HOUR,
+    }
+  })
+}
+
+export function generateId() {
+  return Date.now().toString(36) + Math.random().toString(36).substring(2)
+}
+
 export function generateTimeItems() {
   const timeItems = []
   for (let hour = MIDNIGHT_HOUR; hour < HOURS_PER_DAY; hour++) {
@@ -24,7 +37,7 @@ export function generateTimeItems() {
 }
 
 export function generateActivitySelectOptions(activities) {
-  return activities.map((label, value) => {
-    return { label, value }
+  return activities.map((activity) => {
+    return { label: activity.name, value: activity.id }
   })
 }

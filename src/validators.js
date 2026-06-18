@@ -20,8 +20,12 @@ export function validateActivityItems(activities) {
   return activities.every(isActivityItemValid)
 }
 
-export function isActivityItemValid(activity) {
-  return isString(activity) && isNotEmpty(activity)
+export function isActivityItemValid({ id, name, secondsToComplete }) {
+  return [
+    isString(id) && isNotEmpty(id),
+    isString(name) && isNotEmpty(name),
+    isNumber(secondsToComplete),
+  ].every(Boolean)
 }
 
 export function validateSelectOptions(options) {
@@ -29,7 +33,11 @@ export function validateSelectOptions(options) {
 }
 
 function isSelectOptionValid({ value, label }) {
-  return isNumber(value) && isString(label) && isNotEmpty(label)
+  return (
+    (isNumber(value) || isString(value) || isNotEmpty(value)) &&
+    isString(label) &&
+    isNotEmpty(label)
+  )
 }
 
 export function isHourValid(value) {
@@ -62,4 +70,8 @@ function isNotEmpty(value) {
 
 export function isUndefined(value) {
   return value === undefined
+}
+
+export function isObject(value) {
+  return value !== null && typeof value === 'object' && !Array.isArray(value)
 }

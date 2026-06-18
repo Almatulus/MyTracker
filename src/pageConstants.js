@@ -22,6 +22,7 @@ export const BUTTON_TYPES = [
   BUTTON_TYPE_NEGATIVE,
 ]
 
+export const SECONDS_IN_HOUR = 3600
 export const HOURS_PER_DAY = 24
 export const MIDNIGHT_HOUR = 0
 

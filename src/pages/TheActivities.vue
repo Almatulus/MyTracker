@@ -24,7 +24,7 @@ const emit = defineEmits({
       <ActivitiesItem
         @delete="emit('deleteActivity', activity)"
         v-for="activity in activities"
-        :key="activity"
+        :key="activity.id"
         :activity="activity"
       />
     </ul>

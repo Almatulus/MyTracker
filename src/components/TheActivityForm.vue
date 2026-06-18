@@ -4,16 +4,22 @@ import VButton from '@/components/VButton.vue'
 import { BUTTON_TYPE_PRIMARY } from '@/pageConstants'
 import { ref, nextTick } from 'vue'
 import { isActivityItemValid } from '@/validators'
+import { generateId } from '@/functions'
 
 const emit = defineEmits({
   submit: isActivityItemValid,
 })
 
-const activity = ref('')
+const activityName = ref('')
 
 async function submit() {
-  emit('submit', activity.value)
-  activity.value = ''
+  emit('submit', {
+    id: generateId(),
+    name: activityName.value,
+    secondsToComplete: 0,
+  })
+
+  activityName.value = ''
 
   await nextTick()
 
@@ -24,12 +30,12 @@ async function submit() {
 <template>
   <form @submit.prevent="submit" class="sticky bottom-[64px] flex gap-2 border-t bg-white py-2">
     <input
-      v-model="activity"
+      v-model="activityName"
       type="text"
       placeholder="Type action name"
       class="w-full p-1 outline rounded text-md focus:outline-blue-500"
     />
-    <VButton :type="BUTTON_TYPE_PRIMARY" :disabled="!activity.trim()">
+    <VButton :type="BUTTON_TYPE_PRIMARY" :disabled="!activityName.trim()">
       <PlusIcon class="h-8" />
     </VButton>
   </form>
