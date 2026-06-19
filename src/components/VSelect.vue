@@ -1,7 +1,7 @@
 <script setup>
 import { XMarkIcon } from '@heroicons/vue/24/solid'
 import VButton from './VButton.vue'
-import { isNumberOrNull, validateSelectOptions } from '@/validators.js'
+import { isSelectValueValid, validateSelectOptions } from '@/validators.js'
 import { BUTTON_TYPE_NEGATIVE } from '@/pageConstants.js'
 
 defineProps({
@@ -18,14 +18,14 @@ defineProps({
 const model = defineModel({
   type: [Number, String, null],
   required: true,
-  validator: isNumberOrNull,
+  validator: isSelectValueValid,
 })
 </script>
 
 <template>
   <div class="flex gap-2">
     <select v-model="model" class="w-full truncate rounded bg-gray-200 py-1 px-2 text-xl">
-      <option :value="null" disabled selected>{{ placeholder }}</option>
+      <option :value="null" disabled>{{ placeholder }}</option>
       <option v-for="{ value, label } in options" :key="value" :value="value">
         {{ label }}
       </option>

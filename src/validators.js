@@ -36,12 +36,16 @@ function isSelectOptionValid({ value, label }) {
   return (isNumber(value) || isNotEmptyString(value)) && isNotEmptyString(label)
 }
 
+export function isSelectValueValid(value) {
+  return isNotEmptyString(value) || isNumberOrNull(value)
+}
+
 export function isHourValid(value) {
   return isNumber(value) && isBetween(value, MIDNIGHT_HOUR, HOURS_PER_DAY - 1)
 }
 
 export function isNumberOrNull(value) {
-  return isNumber(value) || isNull(value) || isNotEmptyString(value)
+  return isNumber(value) || isNull(value)
 }
 
 export function isNumber(value) {
@@ -56,7 +60,7 @@ function isBetween(value, start, end) {
   return value >= start && value <= end
 }
 
-function isNull(value) {
+export function isNull(value) {
   return value === null
 }
 
