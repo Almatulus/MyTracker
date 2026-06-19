@@ -33,11 +33,7 @@ export function validateSelectOptions(options) {
 }
 
 function isSelectOptionValid({ value, label }) {
-  return (
-    (isNumber(value) || isString(value) || isNotEmpty(value)) &&
-    isString(label) &&
-    isNotEmpty(label)
-  )
+  return (isNumber(value) || isNotEmptyString(value)) && isNotEmptyString(label)
 }
 
 export function isHourValid(value) {
@@ -45,7 +41,7 @@ export function isHourValid(value) {
 }
 
 export function isNumberOrNull(value) {
-  return isNumber(value) || isNull(value)
+  return isNumber(value) || isNull(value) || isNotEmptyString(value)
 }
 
 export function isNumber(value) {
@@ -74,4 +70,8 @@ export function isUndefined(value) {
 
 export function isObject(value) {
   return value !== null && typeof value === 'object' && !Array.isArray(value)
+}
+
+function isNotEmptyString(value) {
+  return isString(value) && isNotEmpty(value)
 }

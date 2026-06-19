@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, ref } from 'vue'
+import { computed, reactive, ref } from 'vue'
 import TheHeader from './components/TheHeader.vue'
 import TheNav from './components/TheNav.vue'
 import TheTimeline from './pages/TheTimeline.vue'
@@ -23,7 +23,7 @@ function routeTo(page) {
   currentPage.value = page
 }
 
-const activitySelectOptions = generateActivitySelectOptions(activities)
+const activitySelectOptions = computed(() => generateActivitySelectOptions(activities))
 
 function createActivity(activity) {
   activities.push(activity)
