@@ -15,7 +15,7 @@ import { PAGE_PROGRESS, PAGE_TIMELINE, PAGE_ACTIVITIES } from './pageConstants.j
 
 const currentPage = ref(normalizeHash())
 
-const timeItems = generateTimeItems()
+const timeItems = ref(generateTimeItems())
 
 const activities = reactive(generateActivities())
 

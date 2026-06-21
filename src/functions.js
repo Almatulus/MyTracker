@@ -30,7 +30,10 @@ export function generateId() {
 export function generateTimeItems() {
   const timeItems = []
   for (let hour = MIDNIGHT_HOUR; hour < HOURS_PER_DAY; hour++) {
-    timeItems.push({ hour })
+    timeItems.push({
+      hour,
+      activityId: null,
+    })
   }
 
   return timeItems

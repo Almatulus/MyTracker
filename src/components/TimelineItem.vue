@@ -1,5 +1,4 @@
 <script setup>
-import { ref } from 'vue'
 import VSelect from './VSelect.vue'
 import { isTimeLineItemValid, validateSelectOptions } from '@/validators.js'
 import TimelineHour from './TimelineHour.vue'
@@ -16,13 +15,15 @@ const props = defineProps({
     validator: validateSelectOptions,
   },
 })
-
-let selectedId = ref(null)
 </script>
 
 <template>
   <li class="relative flex flex-col gap-2 border-t border-gray-200 py-10 px-4">
-    <VSelect v-model="selectedId" :options="activitySelectOptions" placeholder="Rest" />
+    <VSelect
+      v-model="timelineItem.activityId"
+      :options="activitySelectOptions"
+      placeholder="Rest"
+    />
     <TimelineHour :hour="props.timelineItem.hour" />
   </li>
 </template>
