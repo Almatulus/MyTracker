@@ -15,7 +15,7 @@ import { PAGE_PROGRESS, PAGE_TIMELINE, PAGE_ACTIVITIES } from './pageConstants.j
 
 const currentPage = ref(normalizeHash())
 
-const timeItems = ref(generateTimeItems())
+const timelineItems = ref(generateTimeItems())
 
 const activities = reactive(generateActivities())
 
@@ -30,6 +30,12 @@ function createActivity(activity) {
 }
 
 function deleteActivity(activity) {
+  timelineItems.value.forEach((item) => {
+    if (item.activityId === activity.id) {
+      item.activityId = null
+    }
+  })
+
   activities.splice(activities.indexOf(activity), 1)
 }
 </script>
@@ -40,7 +46,7 @@ function deleteActivity(activity) {
   <main class="flex flex-grow flex-col">
     <TheTimeline
       v-show="currentPage === PAGE_TIMELINE"
-      :timeline-items="timeItems"
+      :timeline-items="timelineItems"
       :activity-select-options="activitySelectOptions"
     />
     <TheActivitites
