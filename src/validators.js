@@ -1,4 +1,4 @@
-import { BUTTON_TYPES, MENU_LIST, HOURS_PER_DAY, MIDNIGHT_HOUR } from './pageConstants'
+import { BUTTON_TYPES, MENU_LIST, HOURS_PER_DAY, MIDNIGHT_HOUR } from './constants'
 
 export function isPageValid(page) {
   return Object.keys(MENU_LIST).includes(page)

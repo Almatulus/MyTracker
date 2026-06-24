@@ -3,7 +3,7 @@ import { computed, watch } from 'vue'
 import { TrashIcon } from '@heroicons/vue/24/solid'
 import VButton from '@/components/VButton.vue'
 import VSelect from '@/components/VSelect.vue'
-import { ACTIVITY_SELECT_OPTIONS } from '@/pageConstants'
+import { ACTIVITY_SELECT_OPTIONS } from '@/constants'
 import { isActivityItemValid, isNumber, isUndefined } from '@/validators'
 
 const props = defineProps({

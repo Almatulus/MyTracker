@@ -11,7 +11,7 @@ import {
   generateActivitySelectOptions,
   generateActivities,
 } from './functions.js'
-import { PAGE_PROGRESS, PAGE_TIMELINE, PAGE_ACTIVITIES } from './pageConstants.js'
+import { PAGE_PROGRESS, PAGE_TIMELINE, PAGE_ACTIVITIES } from './constants.js'
 
 const currentPage = ref(normalizeHash())
 

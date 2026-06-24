@@ -2,7 +2,7 @@
 import { XMarkIcon } from '@heroicons/vue/24/solid'
 import VButton from './VButton.vue'
 import { isSelectValueValid, validateSelectOptions } from '@/validators.js'
-import { BUTTON_TYPE_NEGATIVE } from '@/pageConstants.js'
+import { BUTTON_TYPE_NEGATIVE } from '@/constants.js'
 
 defineProps({
   options: {

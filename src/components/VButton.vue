@@ -4,7 +4,7 @@ import {
   BUTTON_TYPE_PRIMARY,
   BUTTON_TYPE_DANGER,
   BUTTON_TYPE_NEGATIVE,
-} from '@/pageConstants'
+} from '@/constants'
 
 const buttonType = {
   [BUTTON_TYPE_NEUTRAL]: 'bg-gray-300',

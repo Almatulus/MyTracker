@@ -1,6 +1,6 @@
 <script setup>
 import { ClockIcon, CheckCircleIcon } from '@heroicons/vue/24/solid'
-import { PAGE_TIMELINE, PAGE_PROGRESS } from '@/pageConstants'
+import { PAGE_TIMELINE, PAGE_PROGRESS } from '@/constants'
 import { isPageValid } from '@/validators'
 
 const emit = defineEmits({

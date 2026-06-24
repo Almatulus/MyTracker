@@ -1,7 +1,7 @@
 <script setup>
 import NavItem from './NavItem.vue'
 import { isPageValid } from '@/validators.js'
-import { MENU_LIST } from '@/pageConstants.js'
+import { MENU_LIST } from '@/constants.js'
 
 const currentPage = defineModel({
   type: String,

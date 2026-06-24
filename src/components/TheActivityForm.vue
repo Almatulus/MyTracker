@@ -1,7 +1,7 @@
 <script setup>
 import { PlusIcon } from '@heroicons/vue/24/solid'
 import VButton from '@/components/VButton.vue'
-import { BUTTON_TYPE_PRIMARY } from '@/pageConstants'
+import { BUTTON_TYPE_PRIMARY } from '@/constants'
 import { ref, nextTick } from 'vue'
 import { isActivityItemValid } from '@/validators'
 import { generateId } from '@/functions'
