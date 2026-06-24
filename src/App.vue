@@ -38,6 +38,10 @@ function deleteActivity(activity) {
 
   activities.splice(activities.indexOf(activity), 1)
 }
+
+function updateActivityId(timeline, activityId) {
+  timeline.activityId = activityId
+}
 </script>
 
 <template>
@@ -48,6 +52,7 @@ function deleteActivity(activity) {
       v-show="currentPage === PAGE_TIMELINE"
       :timeline-items="timelineItems"
       :activity-select-options="activitySelectOptions"
+      @update:activity-id="updateActivityId"
     />
     <TheActivitites
       @create-activity="createActivity"

@@ -76,6 +76,6 @@ export function isObject(value) {
   return value !== null && typeof value === 'object' && !Array.isArray(value)
 }
 
-function isNotEmptyString(value) {
+export function isNotEmptyString(value) {
   return isString(value) && isNotEmpty(value)
 }
