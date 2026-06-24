@@ -1,5 +1,5 @@
 <script setup>
-import ActivitiesItem from '@/components/ActivityItem.vue'
+import ActivityItem from '@/components/ActivityItem.vue'
 import { validateActivityItems, isActivityItemValid } from '@/validators'
 import TheActivityForm from '@/components/TheActivityForm.vue'
 import TheActivitiesEmptyState from '@/components/TheActivitiesEmptyState.vue'
@@ -21,7 +21,7 @@ const emit = defineEmits({
 <template>
   <div class="flex grow flex-col px-2">
     <ul v-if="activities.length" class="divide-y grow">
-      <ActivitiesItem
+      <ActivityItem
         @delete="emit('deleteActivity', activity)"
         v-for="activity in activities"
         :key="activity.id"
