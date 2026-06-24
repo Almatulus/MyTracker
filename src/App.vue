@@ -38,6 +38,10 @@ function deleteActivity(activity) {
 
   activities.splice(activities.indexOf(activity), 1)
 }
+
+function updateSecondsToComplete(activity, secondsToComplete) {
+  activity.secondsToComplete = secondsToComplete
+}
 </script>
 
 <template>
@@ -54,6 +58,7 @@ function deleteActivity(activity) {
       @delete-activity="deleteActivity"
       v-show="currentPage === PAGE_ACTIVITIES"
       :activities="activities"
+      @update:seconds-to-complete="updateSecondsToComplete"
     />
     <TheProgress v-show="currentPage === PAGE_PROGRESS" />
   </main>

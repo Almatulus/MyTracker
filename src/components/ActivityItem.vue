@@ -4,7 +4,7 @@ import { TrashIcon } from '@heroicons/vue/24/solid'
 import VButton from '@/components/VButton.vue'
 import VSelect from '@/components/VSelect.vue'
 import { ACTIVITY_SELECT_OPTIONS } from '@/pageConstants'
-import { isActivityItemValid, isUndefined } from '@/validators'
+import { isActivityItemValid, isNumber, isUndefined } from '@/validators'
 
 const props = defineProps({
   activity: {
@@ -16,6 +16,7 @@ const props = defineProps({
 
 const emit = defineEmits({
   delete: isUndefined,
+  'update:secondsToComplete': isNumber,
 })
 
 const modelValue = computed({
@@ -28,7 +29,7 @@ const modelValue = computed({
   },
 
   set(val) {
-    props.activity.secondsToComplete = val
+    emit('update:secondsToComplete', val)
   },
 })
 </script>
