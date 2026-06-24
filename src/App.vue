@@ -42,6 +42,10 @@ function deleteActivity(activity) {
 function updateActivityId(timeline, activityId) {
   timeline.activityId = activityId
 }
+
+function updateSecondsToComplete(activity, secondsToComplete) {
+  activity.secondsToComplete = secondsToComplete
+}
 </script>
 
 <template>
@@ -59,6 +63,7 @@ function updateActivityId(timeline, activityId) {
       @delete-activity="deleteActivity"
       v-show="currentPage === PAGE_ACTIVITIES"
       :activities="activities"
+      @update:seconds-to-complete="updateSecondsToComplete"
     />
     <TheProgress v-show="currentPage === PAGE_PROGRESS" />
   </main>

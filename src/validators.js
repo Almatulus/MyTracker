@@ -21,11 +21,9 @@ export function validateActivityItems(activities) {
 }
 
 export function isActivityItemValid({ id, name, secondsToComplete }) {
-  return [
-    isString(id) && isNotEmpty(id),
-    isString(name) && isNotEmpty(name),
-    isNumber(secondsToComplete),
-  ].every(Boolean)
+  return [isNotEmptyString(id), isNotEmptyString(name), isNumberOrNull(secondsToComplete)].every(
+    Boolean,
+  )
 }
 
 export function validateSelectOptions(options) {

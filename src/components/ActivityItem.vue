@@ -1,12 +1,12 @@
 <script setup>
-import { ref } from 'vue'
+import { computed, watch } from 'vue'
 import { TrashIcon } from '@heroicons/vue/24/solid'
 import VButton from '@/components/VButton.vue'
 import VSelect from '@/components/VSelect.vue'
 import { ACTIVITY_SELECT_OPTIONS } from '@/pageConstants'
-import { isActivityItemValid, isUndefined } from '@/validators'
+import { isActivityItemValid, isNumber, isUndefined } from '@/validators'
 
-defineProps({
+const props = defineProps({
   activity: {
     required: true,
     type: Object,
@@ -16,9 +16,22 @@ defineProps({
 
 const emit = defineEmits({
   delete: isUndefined,
+  'update:secondsToComplete': isNumber,
 })
 
-const secondsToComplete = ref(null)
+const modelValue = computed({
+  get() {
+    const val = props.activity.secondsToComplete
+
+    const exists = ACTIVITY_SELECT_OPTIONS.some((o) => o.value === val)
+
+    return exists ? val : null
+  },
+
+  set(val) {
+    emit('update:secondsToComplete', val)
+  },
+})
 </script>
 
 <template>
@@ -31,7 +44,7 @@ const secondsToComplete = ref(null)
     </div>
     <div class="">
       <VSelect
-        v-model="secondsToComplete"
+        v-model="modelValue"
         class="font-mono"
         placeholder="h:mm"
         :options="ACTIVITY_SELECT_OPTIONS"
