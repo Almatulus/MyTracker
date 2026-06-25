@@ -33,6 +33,7 @@ function deleteActivity(activity) {
   timelineItems.value.forEach((item) => {
     if (item.activityId === activity.id) {
       item.activityId = null
+      item.activitySeconds = 0
     }
   })
 
