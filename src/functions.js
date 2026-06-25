@@ -1,4 +1,10 @@
-import { PAGE_TIMELINE, HOURS_PER_DAY, MIDNIGHT_HOUR, SECONDS_IN_HOUR } from './pageConstants.js'
+import {
+  PAGE_TIMELINE,
+  HOURS_PER_DAY,
+  MIDNIGHT_HOUR,
+  SECONDS_IN_HOUR,
+  MILLISECONDS_IN_SECOND,
+} from './pageConstants.js'
 import { isNull, isPageValid } from './validators.js'
 
 export function normalizeHash() {
@@ -33,6 +39,7 @@ export function generateTimeItems() {
     timeItems.push({
       hour,
       activityId: null,
+      activitySeconds: 0,
     })
   }
 
@@ -46,4 +53,14 @@ export function generateActivitySelectOptions(activities) {
       value: activity.id,
     }
   })
+}
+
+export function formatSeconds(seconds) {
+  const date = new Date()
+
+  date.setTime(Math.abs(seconds) * MILLISECONDS_IN_SECOND)
+
+  const utc = date.toUTCString()
+
+  return utc.substring(utc.indexOf(':') - 2, utc.indexOf(':') + 6)
 }
