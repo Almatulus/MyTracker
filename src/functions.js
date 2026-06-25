@@ -1,4 +1,11 @@
-import { PAGE_TIMELINE, HOURS_PER_DAY, MIDNIGHT_HOUR, SECONDS_IN_HOUR } from './constants.js'
+import {
+  PAGE_TIMELINE,
+  HOURS_PER_DAY,
+  MIDNIGHT_HOUR,
+  SECONDS_IN_HOUR,
+  SECONDS_IN_MINUTE,
+  MINUTES_IN_HOUR,
+} from './constants.js'
 import { isNull, isPageValid } from './validators.js'
 
 export function normalizeHash() {
@@ -46,4 +53,20 @@ export function generateActivitySelectOptions(activities) {
       value: activity.id,
     }
   })
+}
+
+export function generatePeriodSelectOptions(periodInMinutes) {
+  return periodInMinutes.map((period) => ({
+    value: period * SECONDS_IN_MINUTE,
+    label: generatePeriodSelectOptionsLabel(period),
+  }))
+}
+
+function generatePeriodSelectOptionsLabel(period) {
+  const hours = Math.floor(period / MINUTES_IN_HOUR)
+    .toString()
+    .padStart(2, 0)
+  const minutes = (period % MINUTES_IN_HOUR).toString().padStart(2, 0)
+
+  return `${hours}:${minutes}`
 }
