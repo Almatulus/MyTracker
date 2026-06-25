@@ -41,6 +41,6 @@ const modalValue = computed({
   <li class="relative flex flex-col gap-2 border-t border-gray-200 py-10 px-4">
     <VSelect v-model="modalValue" :options="activitySelectOptions" placeholder="Rest" />
     <TimelineHour :hour="props.timelineItem.hour" />
-    <TimelineStopWatch :seconds="timelineItem.activitySeconds" />
+    <TimelineStopWatch :seconds="timelineItem.activitySeconds" :hour="timelineItem.hour" />
   </li>
 </template>
