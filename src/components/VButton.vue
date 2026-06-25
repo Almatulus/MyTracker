@@ -4,6 +4,7 @@ import {
   BUTTON_TYPE_PRIMARY,
   BUTTON_TYPE_DANGER,
   BUTTON_TYPE_NEGATIVE,
+  BUTTON_TYPE_SUCCESS,
 } from '@/constants'
 
 const buttonType = {
@@ -11,6 +12,7 @@ const buttonType = {
   [BUTTON_TYPE_PRIMARY]: 'bg-blue-400 text-white',
   [BUTTON_TYPE_NEGATIVE]: 'bg-red-400 text-white',
   [BUTTON_TYPE_DANGER]: 'bg-yellow-400 text-black',
+  [BUTTON_TYPE_SUCCESS]: 'bg-green-400 text-white',
 }
 </script>
 

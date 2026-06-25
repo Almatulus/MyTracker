@@ -8,6 +8,7 @@ import {
 } from '@/validators.js'
 import TimelineHour from './TimelineHour.vue'
 import { computed } from 'vue'
+import TimelineStopWatch from './TimelineStopWatch.vue'
 
 const props = defineProps({
   timelineItem: {
@@ -40,5 +41,6 @@ const modalValue = computed({
   <li class="relative flex flex-col gap-2 border-t border-gray-200 py-10 px-4">
     <VSelect v-model="modalValue" :options="activitySelectOptions" placeholder="Rest" />
     <TimelineHour :hour="props.timelineItem.hour" />
+    <TimelineStopWatch :seconds="timelineItem.activitySeconds" />
   </li>
 </template>

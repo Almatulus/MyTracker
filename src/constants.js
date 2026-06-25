@@ -15,14 +15,17 @@ export const BUTTON_TYPE_NEUTRAL = 'neutral'
 export const BUTTON_TYPE_PRIMARY = 'primary'
 export const BUTTON_TYPE_DANGER = 'danger'
 export const BUTTON_TYPE_NEGATIVE = 'negative'
+export const BUTTON_TYPE_SUCCESS = 'success'
 
 export const BUTTON_TYPES = [
   BUTTON_TYPE_NEUTRAL,
   BUTTON_TYPE_PRIMARY,
   BUTTON_TYPE_DANGER,
   BUTTON_TYPE_NEGATIVE,
+  BUTTON_TYPE_SUCCESS,
 ]
 
+export const MILLISECONDS_IN_SECOND = 1000
 export const HOURS_PER_DAY = 24
 export const MIDNIGHT_HOUR = 0
 export const SECONDS_IN_MINUTE = 60

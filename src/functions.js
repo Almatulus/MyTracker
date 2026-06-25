@@ -5,7 +5,9 @@ import {
   SECONDS_IN_HOUR,
   SECONDS_IN_MINUTE,
   MINUTES_IN_HOUR,
+  MILLISECONDS_IN_SECOND,
 } from './constants.js'
+
 import { isNull, isPageValid } from './validators.js'
 
 export function normalizeHash() {
@@ -40,6 +42,7 @@ export function generateTimeItems() {
     timeItems.push({
       hour,
       activityId: null,
+      activitySeconds: 0,
     })
   }
 
@@ -69,4 +72,14 @@ function generatePeriodSelectOptionsLabel(period) {
   const minutes = (period % MINUTES_IN_HOUR).toString().padStart(2, 0)
 
   return `${hours}:${minutes}`
+}
+
+export function formatSeconds(seconds) {
+  const date = new Date()
+
+  date.setTime(Math.abs(seconds) * MILLISECONDS_IN_SECOND)
+
+  const utc = date.toUTCString()
+
+  return utc.substring(utc.indexOf(':') - 2, utc.indexOf(':') + 6)
 }
