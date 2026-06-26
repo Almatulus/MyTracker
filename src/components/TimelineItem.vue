@@ -7,7 +7,7 @@ import {
   validateSelectOptions,
 } from '@/validators.js'
 import TimelineHour from './TimelineHour.vue'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import TimelineStopWatch from './TimelineStopWatch.vue'
 
 const props = defineProps({
@@ -35,10 +35,16 @@ const modalValue = computed({
     emit('update:activityId', val)
   },
 })
+
+const liRef = ref(null)
+
+defineExpose({
+  liRef,
+})
 </script>
 
 <template>
-  <li class="relative flex flex-col gap-2 border-t border-gray-200 py-10 px-4">
+  <li ref="liRef" class="relative flex flex-col gap-2 border-t border-gray-200 py-10 px-4">
     <VSelect v-model="modalValue" :options="activitySelectOptions" placeholder="Rest" />
     <TimelineHour :hour="props.timelineItem.hour" />
     <TimelineStopWatch :seconds="timelineItem.activitySeconds" :hour="timelineItem.hour" />

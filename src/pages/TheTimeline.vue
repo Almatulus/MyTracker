@@ -7,6 +7,7 @@ import {
   isNull,
   isNotEmptyString,
 } from '@/validators'
+import { onMounted, ref } from 'vue'
 
 defineProps({
   timelineItems: {
@@ -27,6 +28,21 @@ const emit = defineEmits({
     return isTimeLineItemValid(timelineItem) && (isNull(activityId) || isNotEmptyString(activityId))
   },
 })
+
+const timelineRefs = ref([])
+
+onMounted(() => {
+  scrollToCurrentHour()
+})
+
+function scrollToCurrentHour() {
+  const currentHour = new Date().getHours()
+
+  timelineRefs.value[currentHour].liRef.scrollIntoView({
+    behavior: 'smooth',
+    block: 'center',
+  })
+}
 </script>
 
 <template>
@@ -38,6 +54,7 @@ const emit = defineEmits({
         :timeline-item="timeline"
         :activity-select-options="activitySelectOptions"
         @update:activity-id="emit('update:activityId', timeline, $event)"
+        ref="timelineRefs"
       />
     </ul>
   </div>
