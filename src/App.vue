@@ -19,7 +19,13 @@ const timelineItems = ref(generateTimeItems())
 
 const activities = reactive(generateActivities())
 
+const timeline = ref()
+
 function routeTo(page) {
+  if (page === PAGE_TIMELINE && currentPage.value === PAGE_TIMELINE) {
+    timeline.value.scrollToHour(new Date().getHours())
+  }
+
   currentPage.value = page
 }
 
@@ -58,6 +64,7 @@ function updateSecondsToComplete(activity, secondsToComplete) {
       :timeline-items="timelineItems"
       :activity-select-options="activitySelectOptions"
       @update:activity-id="updateActivityId"
+      ref="timeline"
     />
     <TheActivitites
       @create-activity="createActivity"

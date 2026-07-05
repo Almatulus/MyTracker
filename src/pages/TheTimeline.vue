@@ -29,16 +29,18 @@ const emit = defineEmits({
   },
 })
 
+defineExpose({ scrollToHour })
+
 const timelineRefs = ref([])
 
 onMounted(() => {
-  scrollToHour(new Date().getHours())
+  scrollToHour(new Date().getHours(), false)
 })
 
-function scrollToHour(hour) {
+function scrollToHour(hour, isSmooth = true) {
   timelineRefs.value[hour].liRef.scrollIntoView({
     block: 'center',
-    behavior: 'smooth',
+    behavior: isSmooth ? 'smooth' : 'instant',
   })
 }
 </script>
