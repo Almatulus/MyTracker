@@ -54,7 +54,7 @@ function updateSecondsToComplete(activity, secondsToComplete) {
 
   <main class="flex flex-grow flex-col">
     <TheTimeline
-      v-show="currentPage === PAGE_TIMELINE"
+      v-if="currentPage === PAGE_TIMELINE"
       :timeline-items="timelineItems"
       :activity-select-options="activitySelectOptions"
       @update:activity-id="updateActivityId"
@@ -62,11 +62,11 @@ function updateSecondsToComplete(activity, secondsToComplete) {
     <TheActivitites
       @create-activity="createActivity"
       @delete-activity="deleteActivity"
-      v-show="currentPage === PAGE_ACTIVITIES"
+      v-if="currentPage === PAGE_ACTIVITIES"
       :activities="activities"
       @update:seconds-to-complete="updateSecondsToComplete"
     />
-    <TheProgress v-show="currentPage === PAGE_PROGRESS" />
+    <TheProgress v-if="currentPage === PAGE_PROGRESS" />
   </main>
 
   <TheNav v-model="currentPage" />

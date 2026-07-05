@@ -39,7 +39,6 @@ function scrollToCurrentHour() {
   const currentHour = new Date().getHours()
 
   timelineRefs.value[currentHour].liRef.scrollIntoView({
-    behavior: 'smooth',
     block: 'center',
   })
 }
