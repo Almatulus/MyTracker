@@ -32,14 +32,13 @@ const emit = defineEmits({
 const timelineRefs = ref([])
 
 onMounted(() => {
-  scrollToCurrentHour()
+  scrollToHour(new Date().getHours())
 })
 
-function scrollToCurrentHour() {
-  const currentHour = new Date().getHours()
-
-  timelineRefs.value[currentHour].liRef.scrollIntoView({
+function scrollToHour(hour) {
+  timelineRefs.value[hour].liRef.scrollIntoView({
     block: 'center',
+    behavior: 'smooth',
   })
 }
 </script>
@@ -52,6 +51,7 @@ function scrollToCurrentHour() {
         :key="timeline"
         :timeline-item="timeline"
         :activity-select-options="activitySelectOptions"
+        @scroll-to-hour="scrollToHour"
         @update:activity-id="emit('update:activityId', timeline, $event)"
         ref="timelineRefs"
       />

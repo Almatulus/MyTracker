@@ -1,6 +1,7 @@
 <script setup>
 import VSelect from './VSelect.vue'
 import {
+  isHourValid,
   isNotEmptyString,
   isNull,
   isTimeLineItemValid,
@@ -25,6 +26,7 @@ const props = defineProps({
 
 const emit = defineEmits({
   'update:activityId': (activityId) => isNull(activityId) || isNotEmptyString(activityId),
+  scrollToHour: isHourValid,
 })
 
 const modalValue = computed({
@@ -46,7 +48,10 @@ defineExpose({
 <template>
   <li ref="liRef" class="relative flex flex-col gap-2 border-t border-gray-200 py-10 px-4">
     <VSelect v-model="modalValue" :options="activitySelectOptions" placeholder="Rest" />
-    <TimelineHour :hour="props.timelineItem.hour" />
+    <TimelineHour
+      :hour="props.timelineItem.hour"
+      @click.prevent="emit('scrollToHour', timelineItem.hour)"
+    />
     <TimelineStopWatch :seconds="timelineItem.activitySeconds" :hour="timelineItem.hour" />
   </li>
 </template>
