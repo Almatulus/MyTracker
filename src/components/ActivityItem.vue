@@ -5,13 +5,18 @@ import VButton from '@/components/VButton.vue'
 import VSelect from '@/components/VSelect.vue'
 import ActivitySecondsToComplete from './ActivitySecondsToComplete.vue'
 import { ACTIVITY_SELECT_OPTIONS } from '@/constants'
-import { isActivityItemValid, isNumber, isUndefined } from '@/validators'
+import { isActivityItemValid, isNumber, isUndefined, validateTimeLineItems } from '@/validators'
 
 const props = defineProps({
   activity: {
     required: true,
     type: Object,
     validator: isActivityItemValid,
+  },
+  timelineItems: {
+    type: Array,
+    required: true,
+    validator: validateTimeLineItems,
   },
 })
 
@@ -49,6 +54,10 @@ const modelValue = computed({
       placeholder="h:mm"
       :options="ACTIVITY_SELECT_OPTIONS"
     ></VSelect>
-    <ActivitySecondsToComplete :activity="activity" v-if="activity.secondsToComplete" />
+    <ActivitySecondsToComplete
+      :activity="activity"
+      v-if="activity.secondsToComplete"
+      :timeline-items="timelineItems"
+    />
   </li>
 </template>
