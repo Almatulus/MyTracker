@@ -3,6 +3,7 @@ import { computed, watch } from 'vue'
 import { TrashIcon } from '@heroicons/vue/24/solid'
 import VButton from '@/components/VButton.vue'
 import VSelect from '@/components/VSelect.vue'
+import ActivitySecondsToComplete from './ActivitySecondsToComplete.vue'
 import { ACTIVITY_SELECT_OPTIONS } from '@/constants'
 import { isActivityItemValid, isNumber, isUndefined } from '@/validators'
 
@@ -42,13 +43,12 @@ const modelValue = computed({
         <TrashIcon class="h-6" />
       </VButton>
     </div>
-    <div class="">
-      <VSelect
-        v-model="modelValue"
-        class="font-mono"
-        placeholder="h:mm"
-        :options="ACTIVITY_SELECT_OPTIONS"
-      ></VSelect>
-    </div>
+    <VSelect
+      v-model="modelValue"
+      class="font-mono"
+      placeholder="h:mm"
+      :options="ACTIVITY_SELECT_OPTIONS"
+    ></VSelect>
+    <ActivitySecondsToComplete :activity="activity" v-if="activity.secondsToComplete" />
   </li>
 </template>
