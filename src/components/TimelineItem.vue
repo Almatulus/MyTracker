@@ -4,6 +4,7 @@ import {
   isHourValid,
   isNotEmptyString,
   isNull,
+  isNumber,
   isTimeLineItemValid,
   validateSelectOptions,
 } from '@/validators.js'
@@ -27,6 +28,7 @@ const props = defineProps({
 const emit = defineEmits({
   'update:activityId': (activityId) => isNull(activityId) || isNotEmptyString(activityId),
   scrollToHour: isHourValid,
+  updateActivitySeconds: isNumber,
 })
 
 const modalValue = computed({
@@ -52,6 +54,10 @@ defineExpose({
       :hour="props.timelineItem.hour"
       @click.prevent="emit('scrollToHour', timelineItem.hour)"
     />
-    <TimelineStopWatch :seconds="timelineItem.activitySeconds" :hour="timelineItem.hour" />
+    <TimelineStopWatch
+      :seconds="timelineItem.activitySeconds"
+      :hour="timelineItem.hour"
+      @update:seconds="emit('updateActivitySeconds', $event)"
+    />
   </li>
 </template>

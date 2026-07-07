@@ -53,6 +53,12 @@ function updateActivityId(timeline, activityId) {
 function updateSecondsToComplete(activity, secondsToComplete) {
   activity.secondsToComplete = secondsToComplete
 }
+
+function updateTimelineItemActivitySeconds(timeline, activitySeconds) {
+  console.log(timeline.activitySeconds)
+  console.log(activitySeconds)
+  timeline.activitySeconds += activitySeconds
+}
 </script>
 
 <template>
@@ -64,6 +70,7 @@ function updateSecondsToComplete(activity, secondsToComplete) {
       :timeline-items="timelineItems"
       :activity-select-options="activitySelectOptions"
       @update:activity-id="updateActivityId"
+      @update-timeline-item-activity-seconds="updateTimelineItemActivitySeconds"
       ref="timeline"
     />
     <TheActivitites

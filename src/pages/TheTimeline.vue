@@ -6,6 +6,7 @@ import {
   isTimeLineItemValid,
   isNull,
   isNotEmptyString,
+  isNumber,
 } from '@/validators'
 import { onMounted, ref } from 'vue'
 
@@ -27,6 +28,8 @@ const emit = defineEmits({
   'update:activityId': (timelineItem, activityId) => {
     return isTimeLineItemValid(timelineItem) && (isNull(activityId) || isNotEmptyString(activityId))
   },
+  updateTimelineItemActivitySeconds: (timelineItem, activitySeconds) =>
+    isTimeLineItemValid(timelineItem) && isNumber(activitySeconds),
 })
 
 defineExpose({ scrollToHour })
@@ -55,6 +58,7 @@ function scrollToHour(hour, isSmooth = true) {
         :activity-select-options="activitySelectOptions"
         @scroll-to-hour="scrollToHour"
         @update:activity-id="emit('update:activityId', timeline, $event)"
+        @update-activity-seconds="emit('updateTimelineItemActivitySeconds', timeline, $event)"
         ref="timelineRefs"
       />
     </ul>
