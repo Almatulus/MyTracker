@@ -51,7 +51,7 @@ export function generateTimeItems() {
     timeItems.push({
       hour,
       activityId: null,
-      activitySeconds: 0,
+      activitySeconds: 1800,
     })
   }
 

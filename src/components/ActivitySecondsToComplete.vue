@@ -16,13 +16,19 @@ const props = defineProps({
   },
 })
 
-const seconds = computed(() =>
-  formatSeconds(
+const classes = computed(() => `rounded p-1 font-mono ${colorClasses.value}`)
+const colorClasses = computed(() =>
+  secondsDiff.value >= 0 ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800',
+)
+
+const seconds = computed(() => `${sign.value}${formatSeconds(secondsDiff.value)}`)
+const sign = computed(() => (secondsDiff.value >= 0 ? '+' : '-'))
+const secondsDiff = computed(
+  () =>
     getTotalActivitySeconds(props.activity, props.timelineItems) - props.activity.secondsToComplete,
-  ),
 )
 </script>
 
 <template>
-  <div class="rounded bg-green-100 p-1 text-green-800">{{ seconds }}</div>
+  <div :class="classes">{{ seconds }}</div>
 </template>
