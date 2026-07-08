@@ -6,29 +6,17 @@ import TheTimeline from './pages/TheTimeline.vue'
 import TheActivitites from './pages/TheActivities.vue'
 import TheProgress from './pages/TheProgress.vue'
 import {
-  normalizeHash,
   generateTimeItems,
   generateActivitySelectOptions,
   generatePeriodSelectOptions,
   generateActivities,
 } from './functions.js'
+import { currentPage, timelineRef, routeTo } from './router.js'
 import { PAGE_PROGRESS, PAGE_TIMELINE, PAGE_ACTIVITIES } from './constants.js'
-
-const currentPage = ref(normalizeHash())
 
 const timelineItems = ref(generateTimeItems())
 
 const activities = reactive(generateActivities())
-
-const timeline = ref()
-
-function routeTo(page) {
-  if (page === PAGE_TIMELINE && currentPage.value === PAGE_TIMELINE) {
-    timeline.value.scrollToHour(new Date().getHours())
-  }
-
-  currentPage.value = page
-}
 
 const activitySelectOptions = computed(() => generateActivitySelectOptions(activities))
 
@@ -76,7 +64,7 @@ provide('updateSecondsToComplete', updateSecondsToComplete)
     <TheTimeline
       v-show="currentPage === PAGE_TIMELINE"
       :timeline-items="timelineItems"
-      ref="timeline"
+      ref="timelineRef"
     />
     <TheActivitites v-show="currentPage === PAGE_ACTIVITIES" :activities="activities" />
     <TheProgress v-show="currentPage === PAGE_PROGRESS" />
