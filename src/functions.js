@@ -67,7 +67,11 @@ export function generateActivitySelectOptions(activities) {
   })
 }
 
-export function generatePeriodSelectOptions(periodInMinutes) {
+export function generatePeriodSelectOptions() {
+  const periodInMinutes = [
+    15, 30, 45, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330, 360, 390, 420, 450, 480,
+  ]
+
   return periodInMinutes.map((period) => ({
     value: period * SECONDS_IN_MINUTE,
     label: generatePeriodSelectOptionsLabel(period),

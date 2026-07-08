@@ -1,5 +1,5 @@
 <script setup>
-import { computed, reactive, ref } from 'vue'
+import { computed, reactive, ref, provide } from 'vue'
 import TheHeader from './components/TheHeader.vue'
 import TheNav from './components/TheNav.vue'
 import TheTimeline from './pages/TheTimeline.vue'
@@ -9,6 +9,7 @@ import {
   normalizeHash,
   generateTimeItems,
   generateActivitySelectOptions,
+  generatePeriodSelectOptions,
   generateActivities,
 } from './functions.js'
 import { PAGE_PROGRESS, PAGE_TIMELINE, PAGE_ACTIVITIES } from './constants.js'
@@ -55,10 +56,15 @@ function updateSecondsToComplete(activity, secondsToComplete) {
 }
 
 function updateTimelineItemActivitySeconds(timeline, activitySeconds) {
-  console.log(timeline.activitySeconds)
-  console.log(activitySeconds)
   timeline.activitySeconds += activitySeconds
 }
+
+provide('timelineItems', timelineItems)
+provide('activitySelectOptions', activitySelectOptions.value)
+provide('periodSelectOptions', generatePeriodSelectOptions())
+provide('updateActivityId', updateActivityId)
+provide('updateTimelineItemActivitySeconds', updateTimelineItemActivitySeconds)
+provide('updateSecondsToComplete', updateSecondsToComplete)
 </script>
 
 <template>
@@ -68,9 +74,6 @@ function updateTimelineItemActivitySeconds(timeline, activitySeconds) {
     <TheTimeline
       v-show="currentPage === PAGE_TIMELINE"
       :timeline-items="timelineItems"
-      :activity-select-options="activitySelectOptions"
-      @update:activity-id="updateActivityId"
-      @update-timeline-item-activity-seconds="updateTimelineItemActivitySeconds"
       ref="timeline"
     />
     <TheActivitites
@@ -78,8 +81,6 @@ function updateTimelineItemActivitySeconds(timeline, activitySeconds) {
       @delete-activity="deleteActivity"
       v-show="currentPage === PAGE_ACTIVITIES"
       :activities="activities"
-      :timeline-items="timelineItems"
-      @update:seconds-to-complete="updateSecondsToComplete"
     />
     <TheProgress v-show="currentPage === PAGE_PROGRESS" />
   </main>

@@ -1,13 +1,6 @@
 <script setup>
 import TimelineItem from '@/components/TimelineItem.vue'
-import {
-  validateTimeLineItems,
-  validateSelectOptions,
-  isTimeLineItemValid,
-  isNull,
-  isNotEmptyString,
-  isNumber,
-} from '@/validators'
+import { validateTimeLineItems, isTimeLineItemValid, isNull, isNotEmptyString } from '@/validators'
 import { onMounted, ref } from 'vue'
 
 defineProps({
@@ -16,20 +9,6 @@ defineProps({
     required: true,
     validator: validateTimeLineItems,
   },
-
-  activitySelectOptions: {
-    type: Array,
-    required: true,
-    validator: validateSelectOptions,
-  },
-})
-
-const emit = defineEmits({
-  'update:activityId': (timelineItem, activityId) => {
-    return isTimeLineItemValid(timelineItem) && (isNull(activityId) || isNotEmptyString(activityId))
-  },
-  updateTimelineItemActivitySeconds: (timelineItem, activitySeconds) =>
-    isTimeLineItemValid(timelineItem) && isNumber(activitySeconds),
 })
 
 defineExpose({ scrollToHour })
@@ -55,10 +34,7 @@ function scrollToHour(hour, isSmooth = true) {
         v-for="timeline in timelineItems"
         :key="timeline"
         :timeline-item="timeline"
-        :activity-select-options="activitySelectOptions"
         @scroll-to-hour="scrollToHour"
-        @update:activity-id="emit('update:activityId', timeline, $event)"
-        @update-activity-seconds="emit('updateTimelineItemActivitySeconds', timeline, $event)"
         ref="timelineRefs"
       />
     </ul>
