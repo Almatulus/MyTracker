@@ -10,12 +10,6 @@ const activityName = ref('')
 const createActivity = inject('createActivity')
 
 async function submit() {
-  // emit('submit', {
-  //   id: generateId(),
-  //   name: activityName.value,
-  //   secondsToComplete: 0,
-  // })
-
   createActivity({
     id: generateId(),
     name: activityName.value,

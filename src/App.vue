@@ -64,6 +64,7 @@ provide('activitySelectOptions', activitySelectOptions.value)
 provide('periodSelectOptions', generatePeriodSelectOptions())
 provide('updateActivityId', updateActivityId)
 provide('createActivity', createActivity)
+provide('deleteActivity', deleteActivity)
 provide('updateTimelineItemActivitySeconds', updateTimelineItemActivitySeconds)
 provide('updateSecondsToComplete', updateSecondsToComplete)
 </script>
@@ -77,11 +78,7 @@ provide('updateSecondsToComplete', updateSecondsToComplete)
       :timeline-items="timelineItems"
       ref="timeline"
     />
-    <TheActivitites
-      @delete-activity="deleteActivity"
-      v-show="currentPage === PAGE_ACTIVITIES"
-      :activities="activities"
-    />
+    <TheActivitites v-show="currentPage === PAGE_ACTIVITIES" :activities="activities" />
     <TheProgress v-show="currentPage === PAGE_PROGRESS" />
   </main>
 
