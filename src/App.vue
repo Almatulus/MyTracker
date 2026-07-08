@@ -11,7 +11,7 @@ import {
   generatePeriodSelectOptions,
   generateActivities,
 } from './functions.js'
-import { currentPage, timelineRef, routeTo } from './router.js'
+import { currentPage, timelineRef } from './router.js'
 import { PAGE_PROGRESS, PAGE_TIMELINE, PAGE_ACTIVITIES } from './constants.js'
 
 const timelineItems = ref(generateTimeItems())
@@ -58,7 +58,7 @@ provide('updateSecondsToComplete', updateSecondsToComplete)
 </script>
 
 <template>
-  <TheHeader @navigate="routeTo($event)" />
+  <TheHeader />
 
   <main class="flex flex-grow flex-col">
     <TheTimeline
@@ -70,5 +70,5 @@ provide('updateSecondsToComplete', updateSecondsToComplete)
     <TheProgress v-show="currentPage === PAGE_PROGRESS" />
   </main>
 
-  <TheNav v-model="currentPage" />
+  <TheNav />
 </template>

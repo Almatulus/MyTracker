@@ -8,20 +8,6 @@ import {
   MILLISECONDS_IN_SECOND,
 } from './constants.js'
 
-import { isNull, isPageValid } from './validators.js'
-
-export function normalizeHash() {
-  const page = window.location.hash.slice(1)
-
-  if (isPageValid(page)) {
-    return page
-  }
-
-  window.location.hash = PAGE_TIMELINE
-
-  return PAGE_TIMELINE
-}
-
 export function getTotalActivitySeconds(activity, timelineItems) {
   return timelineItems
     .filter((timelineItem) => timelineItem.activityId === activity.id)

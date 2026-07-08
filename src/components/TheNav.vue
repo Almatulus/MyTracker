@@ -1,13 +1,7 @@
 <script setup>
 import NavItem from './NavItem.vue'
-import { isPageValid } from '@/validators.js'
 import { MENU_LIST } from '@/constants.js'
-
-const currentPage = defineModel({
-  type: String,
-  required: true,
-  validator: isPageValid,
-})
+import { routeTo, currentPage } from '@/router.js'
 </script>
 
 <template>
@@ -18,7 +12,7 @@ const currentPage = defineModel({
         :key="page"
         :href="`#${page}`"
         :class="{ 'bg-slate-300 pointer-events-none': page === currentPage }"
-        @click="currentPage = page"
+        @click="routeTo(page)"
       >
         <component class="h-6 w-6" :is="icon"></component>{{ page }}
       </NavItem>
