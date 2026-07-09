@@ -1,5 +1,6 @@
 <script setup>
 import TimelineItem from '@/components/TimelineItem.vue'
+import { currentHour } from '@/functions'
 import { validateTimeLineItems, isTimeLineItemValid, isNull, isNotEmptyString } from '@/validators'
 import { onMounted, ref } from 'vue'
 
@@ -16,7 +17,7 @@ defineExpose({ scrollToHour })
 const timelineRefs = ref([])
 
 onMounted(() => {
-  scrollToHour(new Date().getHours(), false)
+  scrollToHour(currentHour(), false)
 })
 
 function scrollToHour(hour, isSmooth = true) {
@@ -34,7 +35,7 @@ function scrollToHour(hour, isSmooth = true) {
         v-for="timeline in timelineItems"
         :key="timeline"
         :timeline-item="timeline"
-        @scroll-to-hour="scrollToHour"
+        @scroll-to-hour="scrollToHour(timeline.hour)"
         ref="timelineRefs"
       />
     </ul>

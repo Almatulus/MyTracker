@@ -3,7 +3,7 @@ import { isTimeLineItemValid } from '@/validators.js'
 import VButton from './VButton.vue'
 import { ArrowPathIcon, PauseIcon, PlayIcon } from '@heroicons/vue/24/solid'
 import { computed, ref, inject } from 'vue'
-import { formatSeconds } from '@/functions.js'
+import { currentHour, formatSeconds } from '@/functions.js'
 import { MILLISECONDS_IN_SECOND } from '@/constants.js'
 import { updateSecondsToCompleteKey } from '@/keys.js'
 
@@ -22,7 +22,7 @@ const formattedSeconds = computed(() => formatSeconds(props.timelineItem.activit
 const seconds = ref(props.timelineItem.activitySeconds)
 let timerId = null
 const isRunning = ref(false)
-const isStartButtonDisabled = props.timelineItem.hour !== new Date().getHours()
+const isStartButtonDisabled = props.timelineItem.hour !== currentHour()
 
 function start() {
   timerId = setInterval(() => {

@@ -1,6 +1,7 @@
 <script setup>
 import { isHourValid } from '@/validators'
 import { computed } from 'vue'
+import { currentHour } from '@/functions'
 
 const props = defineProps({
   hour: {
@@ -11,7 +12,7 @@ const props = defineProps({
 
 const classes = [
   'absolute -top-4 left-1/2 -translate-x-1/2 rounded  px-2  font-mono',
-  props.hour === new Date().getHours()
+  props.hour === currentHour()
     ? 'bg-purple-900 text-white font-bold text-lg'
     : 'bg-gray-100 text-grey-500',
 ]

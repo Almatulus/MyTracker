@@ -8,6 +8,10 @@ import {
   MILLISECONDS_IN_SECOND,
 } from './constants.js'
 
+export function currentHour() {
+  return new Date().getHours()
+}
+
 export function getTotalActivitySeconds(activity, timelineItems) {
   return timelineItems
     .filter((timelineItem) => timelineItem.activityId === activity.id)

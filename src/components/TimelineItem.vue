@@ -1,6 +1,6 @@
 <script setup>
 import VSelect from './VSelect.vue'
-import { isHourValid, isTimeLineItemValid } from '@/validators.js'
+import { isTimeLineItemValid, isUndefined } from '@/validators.js'
 import TimelineHour from './TimelineHour.vue'
 import { computed, inject, ref } from 'vue'
 import TimelineStopWatch from './TimelineStopWatch.vue'
@@ -15,7 +15,7 @@ const props = defineProps({
 })
 
 const emit = defineEmits({
-  scrollToHour: isHourValid,
+  scrollToHour: isUndefined,
 })
 
 const activitySelectOptions = inject(activitySelectOptionsKey)
@@ -40,10 +40,7 @@ defineExpose({
 <template>
   <li ref="liRef" class="relative flex flex-col gap-2 border-t border-gray-200 py-10 px-4">
     <VSelect v-model="modalValue" :options="activitySelectOptions" placeholder="Rest" />
-    <TimelineHour
-      :hour="props.timelineItem.hour"
-      @click.prevent="emit('scrollToHour', timelineItem.hour)"
-    />
+    <TimelineHour :hour="props.timelineItem.hour" @click.prevent="emit('scrollToHour')" />
     <TimelineStopWatch :timeline-item="timelineItem" />
   </li>
 </template>

@@ -1,6 +1,7 @@
 import { ref } from 'vue'
 import { PAGE_TIMELINE } from './constants'
 import { isPageValid } from './validators.js'
+import { currentHour } from './functions'
 
 function normalizeHash() {
   const page = window.location.hash.slice(1)
@@ -20,7 +21,7 @@ export const timelineRef = ref()
 
 export function routeTo(page) {
   if (page === PAGE_TIMELINE && currentPage.value === PAGE_TIMELINE) {
-    timelineRef.value.scrollToHour(new Date().getHours())
+    timelineRef.value.scrollToHour(currentHour())
   }
 
   currentPage.value = page
