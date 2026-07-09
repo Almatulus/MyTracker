@@ -5,6 +5,7 @@ import VButton from '@/components/VButton.vue'
 import VSelect from '@/components/VSelect.vue'
 import ActivitySecondsToComplete from './ActivitySecondsToComplete.vue'
 import { isActivityItemValid } from '@/validators'
+import { periodSelectOptionsKey, updateSecondsToCompleteKey, deleteActivityKey } from '@/keys.js'
 
 const props = defineProps({
   activity: {
@@ -14,9 +15,9 @@ const props = defineProps({
   },
 })
 
-const updateSecondsToComplete = inject('updateSecondsToComplete')
-const periodSelectOptions = inject('periodSelectOptions')
-const deleteActivity = inject('deleteActivity')
+const updateSecondsToComplete = inject(updateSecondsToCompleteKey)
+const periodSelectOptions = inject(periodSelectOptionsKey)
+const deleteActivity = inject(deleteActivityKey)
 
 const modelValue = computed({
   get() {

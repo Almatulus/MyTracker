@@ -13,6 +13,7 @@ import {
 } from './functions.js'
 import { currentPage, timelineRef } from './router.js'
 import { PAGE_PROGRESS, PAGE_TIMELINE, PAGE_ACTIVITIES } from './constants.js'
+import * as keys from './keys.js'
 
 const timelineItems = ref(generateTimeItems())
 
@@ -47,14 +48,14 @@ function updateTimelineItemActivitySeconds(timeline, activitySeconds) {
   timeline.activitySeconds += activitySeconds
 }
 
-provide('timelineItems', timelineItems)
-provide('activitySelectOptions', activitySelectOptions.value)
-provide('periodSelectOptions', generatePeriodSelectOptions())
-provide('updateActivityId', updateActivityId)
-provide('createActivity', createActivity)
-provide('deleteActivity', deleteActivity)
-provide('updateTimelineItemActivitySeconds', updateTimelineItemActivitySeconds)
-provide('updateSecondsToComplete', updateSecondsToComplete)
+provide(keys.timelineItemsKey, timelineItems)
+provide(keys.activitySelectOptionsKey, activitySelectOptions.value)
+provide(keys.periodSelectOptionsKey, generatePeriodSelectOptions())
+provide(keys.updateActivityIdKey, updateActivityId)
+provide(keys.createActivityKey, createActivity)
+provide(keys.deleteActivityKey, deleteActivity)
+provide(keys.updateTimelineItemActivitySecondsKey, updateTimelineItemActivitySeconds)
+provide(keys.updateSecondsToCompleteKey, updateSecondsToComplete)
 </script>
 
 <template>

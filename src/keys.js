@@ -1,0 +1,8 @@
+export const timelineItemsKey = Symbol()
+export const activitySelectOptionsKey = Symbol()
+export const periodSelectOptionsKey = Symbol()
+export const updateActivityIdKey = Symbol()
+export const createActivityKey = Symbol()
+export const deleteActivityKey = Symbol()
+export const updateTimelineItemActivitySecondsKey = Symbol()
+export const updateSecondsToCompleteKey = Symbol()
