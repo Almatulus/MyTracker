@@ -4,12 +4,6 @@ export const PAGE_TIMELINE = 'timeline'
 export const PAGE_ACTIVITIES = 'activities'
 export const PAGE_PROGRESS = 'progress'
 
-// export const MENU_LIST = {
-//   [PAGE_TIMELINE]: ClockIcon,
-//   [PAGE_ACTIVITIES]: ListBulletIcon,
-//   [PAGE_PROGRESS]: ChartBarIcon,
-// }
-
 export const MENU_ITEMS = [
   {
     page: PAGE_TIMELINE,
