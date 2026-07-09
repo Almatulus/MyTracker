@@ -1,7 +1,11 @@
-import { BUTTON_TYPES, MENU_LIST, HOURS_PER_DAY, MIDNIGHT_HOUR } from './constants'
+import { BUTTON_TYPES, MENU_ITEMS, HOURS_PER_DAY, MIDNIGHT_HOUR } from './constants'
 
 export function isPageValid(page) {
-  return Object.keys(MENU_LIST).includes(page)
+  return MENU_ITEMS.some((menuItem) => menuItem.page === page)
+}
+
+export function isMenuItemValid(menuItem) {
+  return MENU_ITEMS.includes(menuItem)
 }
 
 export function isButtonTypeValid(type) {
