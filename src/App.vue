@@ -29,7 +29,7 @@ function updateTimelineItemActivitySeconds(timeline, activitySeconds) {
 }
 
 provide(keys.timelineItemsKey, timelineItems)
-provide(keys.activitySelectOptionsKey, activitySelectOptions.value)
+provide(keys.activitySelectOptionsKey, activitySelectOptions)
 provide(keys.periodSelectOptionsKey, generatePeriodSelectOptions())
 provide(keys.updateActivityIdKey, updateActivityId)
 provide(keys.createActivityKey, createActivity)

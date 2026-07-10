@@ -5,7 +5,7 @@ import { ArrowPathIcon, PauseIcon, PlayIcon } from '@heroicons/vue/24/solid'
 import { computed, ref, inject } from 'vue'
 import { currentHour, formatSeconds } from '@/functions.js'
 import { MILLISECONDS_IN_SECOND } from '@/constants.js'
-import { updateSecondsToCompleteKey } from '@/keys.js'
+import { updateTimelineItemActivitySecondsKey } from '@/keys.js'
 
 const props = defineProps({
   timelineItem: {
@@ -15,7 +15,7 @@ const props = defineProps({
   },
 })
 
-const updateTimelineItemActivitySeconds = inject(updateSecondsToCompleteKey)
+const updateTimelineItemActivitySeconds = inject(updateTimelineItemActivitySecondsKey)
 
 const formattedSeconds = computed(() => formatSeconds(props.timelineItem.activitySeconds))
 
