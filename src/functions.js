@@ -1,7 +1,4 @@
 import {
-  PAGE_TIMELINE,
-  HOURS_PER_DAY,
-  MIDNIGHT_HOUR,
   SECONDS_IN_HOUR,
   SECONDS_IN_MINUTE,
   MINUTES_IN_HOUR,
@@ -33,19 +30,6 @@ export function generateActivities() {
 
 export function generateId() {
   return Date.now().toString(36) + Math.random().toString(36).substring(2)
-}
-
-export function generateTimeItems() {
-  const timeItems = []
-  for (let hour = MIDNIGHT_HOUR; hour < HOURS_PER_DAY; hour++) {
-    timeItems.push({
-      hour,
-      activityId: null,
-      activitySeconds: 0,
-    })
-  }
-
-  return timeItems
 }
 
 export function generateActivitySelectOptions(activities) {

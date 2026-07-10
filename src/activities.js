@@ -8,14 +8,7 @@ export function createActivity(activity) {
   activities.push(activity)
 }
 
-export function deleteActivity(timelineItems, activity) {
-  timelineItems.forEach((item) => {
-    if (item.activityId === activity.id) {
-      item.activityId = null
-      item.activitySeconds = 0
-    }
-  })
-
+export function deleteActivity(activity) {
   activities.splice(activities.indexOf(activity), 1)
 }
 
