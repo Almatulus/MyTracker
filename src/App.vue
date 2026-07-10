@@ -5,11 +5,7 @@ import TheNav from './components/TheNav.vue'
 import TheTimeline from './pages/TheTimeline.vue'
 import TheActivitites from './pages/TheActivities.vue'
 import TheProgress from './pages/TheProgress.vue'
-import {
-  generateTimeItems,
-  generateActivitySelectOptions,
-  generatePeriodSelectOptions,
-} from './functions.js'
+import { generateTimeItems, generatePeriodSelectOptions } from './functions.js'
 import { currentPage, timelineRef } from './router.js'
 import { PAGE_PROGRESS, PAGE_TIMELINE, PAGE_ACTIVITIES } from './constants.js'
 import * as keys from './keys.js'
@@ -29,7 +25,7 @@ function updateTimelineItemActivitySeconds(timeline, activitySeconds) {
 }
 
 provide(keys.timelineItemsKey, timelineItems)
-provide(keys.activitySelectOptionsKey, activitySelectOptions.value)
+provide(keys.activitySelectOptionsKey, activitySelectOptions)
 provide(keys.periodSelectOptionsKey, generatePeriodSelectOptions())
 provide(keys.updateActivityIdKey, updateActivityId)
 provide(keys.createActivityKey, createActivity)
