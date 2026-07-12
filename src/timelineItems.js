@@ -4,7 +4,7 @@ import { MIDNIGHT_HOUR, HOURS_PER_DAY } from './constants'
 export const timelineItems = ref(generateTimelineItems())
 
 export function updateTimelineItemActivitySeconds(timeline, activitySeconds) {
-  timeline.activitySeconds += activitySeconds
+  timeline.activitySeconds = activitySeconds
 }
 
 export function updateTimelineActivityId(timeline, activityId) {

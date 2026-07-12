@@ -2,7 +2,7 @@
 import { PlusIcon } from '@heroicons/vue/24/solid'
 import VButton from '@/components/VButton.vue'
 import { BUTTON_TYPE_PRIMARY } from '@/constants'
-import { ref, nextTick, inject } from 'vue'
+import { ref, nextTick } from 'vue'
 import { generateId } from '@/functions'
 import { createActivity } from '@/activities'
 

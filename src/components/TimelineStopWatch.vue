@@ -2,7 +2,7 @@
 import { isTimeLineItemValid } from '@/validators.js'
 import VButton from './VButton.vue'
 import { ArrowPathIcon, PauseIcon, PlayIcon } from '@heroicons/vue/24/solid'
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { currentHour, formatSeconds } from '@/functions.js'
 import { MILLISECONDS_IN_SECOND } from '@/constants.js'
 import { updateTimelineItemActivitySeconds } from '@/timelineItems'
@@ -24,7 +24,7 @@ const isStartButtonDisabled = props.timelineItem.hour !== currentHour()
 
 function start() {
   timerId = setInterval(() => {
-    updateTimelineItemActivitySeconds(props.timelineItem, 1)
+    updateTimelineItemActivitySeconds(props.timelineItem, props.timelineItem.activitySeconds + 1)
     seconds.value++
   }, MILLISECONDS_IN_SECOND)
 
@@ -39,10 +39,20 @@ function stop() {
 function reset() {
   if (timerId) stop()
 
-  updateTimelineItemActivitySeconds(props.timelineItem, -seconds.value)
+  updateTimelineItemActivitySeconds(
+    props.timelineItem,
+    props.timelineItem.activitySeconds - seconds.value,
+  )
 
   seconds.value = 0
 }
+
+watch(
+  () => props.timelineItem.activityId,
+  () => {
+    updateTimelineItemActivitySeconds(props.timelineItem, seconds.value)
+  },
+)
 </script>
 
 <template>
