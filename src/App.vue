@@ -10,20 +10,14 @@ import { currentPage, timelineRef } from './router.js'
 import { PAGE_PROGRESS, PAGE_TIMELINE, PAGE_ACTIVITIES } from './constants.js'
 import * as keys from './keys.js'
 import {
-  activities,
   activitySelectOptions,
   createActivity,
   deleteActivity,
   updateActivityId,
   updateSecondsToComplete,
 } from './activities.js'
-import {
-  resetTimelineItem,
-  timelineItems,
-  updateTimelineItemActivitySeconds,
-} from './timelineItems.js'
+import { resetTimelineItem, updateTimelineItemActivitySeconds } from './timelineItems.js'
 
-provide(keys.timelineItemsKey, timelineItems)
 provide(keys.activitySelectOptionsKey, activitySelectOptions)
 provide(keys.periodSelectOptionsKey, generatePeriodSelectOptions())
 provide(keys.updateActivityIdKey, updateActivityId)
@@ -40,12 +34,8 @@ provide(keys.updateSecondsToCompleteKey, updateSecondsToComplete)
   <TheHeader />
 
   <main class="flex flex-grow flex-col">
-    <TheTimeline
-      v-show="currentPage === PAGE_TIMELINE"
-      :timeline-items="timelineItems"
-      ref="timelineRef"
-    />
-    <TheActivitites v-show="currentPage === PAGE_ACTIVITIES" :activities="activities" />
+    <TheTimeline v-show="currentPage === PAGE_TIMELINE" ref="timelineRef" />
+    <TheActivitites v-show="currentPage === PAGE_ACTIVITIES" />
     <TheProgress v-show="currentPage === PAGE_PROGRESS" />
   </main>
 
