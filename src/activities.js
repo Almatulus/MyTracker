@@ -5,16 +5,16 @@ import { SECONDS_IN_HOUR } from './constants'
 export const activities = reactive(generateActivities())
 export const activitySelectOptions = computed(() => generateActivitySelectOptions(activities))
 
+export function updateActivity(activity, fields) {
+  return Object.assign(activity, fields)
+}
+
 export function createActivity(activity) {
   activities.push(activity)
 }
 
 export function deleteActivity(activity) {
   activities.splice(activities.indexOf(activity), 1)
-}
-
-export function updateSecondsToComplete(activity, secondsToComplete) {
-  activity.secondsToComplete = secondsToComplete
 }
 
 function generateActivities() {

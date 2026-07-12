@@ -5,7 +5,7 @@ import VButton from '@/components/VButton.vue'
 import VSelect from '@/components/VSelect.vue'
 import ActivitySecondsToComplete from './ActivitySecondsToComplete.vue'
 import { isActivityItemValid } from '@/validators'
-import { updateSecondsToComplete, deleteActivity } from '@/activities.js'
+import { deleteActivity, updateActivity } from '@/activities.js'
 import { PERIOD_SELECT_OPTIONS } from '@/constants.js'
 import { resetTimelineItem } from '@/timelineItems.js'
 
@@ -27,7 +27,7 @@ const modelValue = computed({
   },
 
   set(val) {
-    updateSecondsToComplete(props.activity, val)
+    updateActivity(props.activity, { secondsToComplete: val })
   },
 })
 
