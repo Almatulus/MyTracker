@@ -5,7 +5,7 @@ import TimelineHour from './TimelineHour.vue'
 import { computed, ref } from 'vue'
 import TimelineStopWatch from './TimelineStopWatch.vue'
 import { activitySelectOptions } from '@/activities.js'
-import { updateTimelineActivityId } from '@/timelineItems.js'
+import { updateTimelineItem } from '@/timelineItems.js'
 
 const props = defineProps({
   timelineItem: {
@@ -24,7 +24,7 @@ const modelValue = computed({
     return props.timelineItem.activityId
   },
   set(val) {
-    updateTimelineActivityId(props.timelineItem, val)
+    updateTimelineItem(props.timelineItem, { activityId: val })
   },
 })
 
