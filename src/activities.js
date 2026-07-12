@@ -13,10 +13,6 @@ export function deleteActivity(activity) {
   activities.splice(activities.indexOf(activity), 1)
 }
 
-export function updateActivityId(timeline, activityId) {
-  timeline.activityId = activityId
-}
-
 export function updateSecondsToComplete(activity, secondsToComplete) {
   activity.secondsToComplete = secondsToComplete
 }

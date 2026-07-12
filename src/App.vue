@@ -1,33 +1,11 @@
 <script setup>
-import { provide } from 'vue'
 import TheHeader from './components/TheHeader.vue'
 import TheNav from './components/TheNav.vue'
 import TheTimeline from './pages/TheTimeline.vue'
 import TheActivitites from './pages/TheActivities.vue'
 import TheProgress from './pages/TheProgress.vue'
-import { generatePeriodSelectOptions } from './functions.js'
 import { currentPage, timelineRef } from './router.js'
 import { PAGE_PROGRESS, PAGE_TIMELINE, PAGE_ACTIVITIES } from './constants.js'
-import * as keys from './keys.js'
-import {
-  activitySelectOptions,
-  createActivity,
-  deleteActivity,
-  updateActivityId,
-  updateSecondsToComplete,
-} from './activities.js'
-import { resetTimelineItem, updateTimelineItemActivitySeconds } from './timelineItems.js'
-
-provide(keys.activitySelectOptionsKey, activitySelectOptions)
-provide(keys.periodSelectOptionsKey, generatePeriodSelectOptions())
-provide(keys.updateActivityIdKey, updateActivityId)
-provide(keys.createActivityKey, createActivity)
-provide(keys.deleteActivityKey, (activity) => {
-  resetTimelineItem(activity)
-  deleteActivity(activity)
-})
-provide(keys.updateTimelineItemActivitySecondsKey, updateTimelineItemActivitySeconds)
-provide(keys.updateSecondsToCompleteKey, updateSecondsToComplete)
 </script>
 
 <template>

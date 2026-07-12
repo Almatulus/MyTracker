@@ -4,11 +4,9 @@ import VButton from '@/components/VButton.vue'
 import { BUTTON_TYPE_PRIMARY } from '@/constants'
 import { ref, nextTick, inject } from 'vue'
 import { generateId } from '@/functions'
-import { createActivityKey } from '@/keys'
+import { createActivity } from '@/activities'
 
 const activityName = ref('')
-
-const createActivity = inject(createActivityKey)
 
 async function submit() {
   createActivity({

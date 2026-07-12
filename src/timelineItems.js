@@ -7,6 +7,10 @@ export function updateTimelineItemActivitySeconds(timeline, activitySeconds) {
   timeline.activitySeconds += activitySeconds
 }
 
+export function updateTimelineActivityId(timeline, activityId) {
+  timeline.activityId = activityId
+}
+
 export function resetTimelineItem(activity) {
   timelineItems.value.forEach((item) => {
     if (item.activityId === activity.id) {
