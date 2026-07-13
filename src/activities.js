@@ -4,6 +4,9 @@ import { SECONDS_IN_HOUR } from './constants'
 
 export const activities = reactive(generateActivities())
 export const activitySelectOptions = computed(() => generateActivitySelectOptions(activities))
+export const trackedActivities = computed(() =>
+  activities.filter((activity) => activity.secondsToComplete),
+)
 
 export function updateActivity(activity, fields) {
   return Object.assign(activity, fields)
