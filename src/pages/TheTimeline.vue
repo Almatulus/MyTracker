@@ -6,10 +6,6 @@ import { scrollToHour, scrollToCurrentHour } from '@/timelineItems'
 import { currentPage } from '@/router'
 import { PAGE_TIMELINE } from '@/constants'
 
-// onMounted(() => {
-//   scrollToCurrentHour(false)
-// })
-
 watchPostEffect(async () => {
   if (currentPage.value === PAGE_TIMELINE) {
     await nextTick()

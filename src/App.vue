@@ -5,6 +5,7 @@ import TheTimeline from './pages/TheTimeline.vue'
 import TheActivitites from './pages/TheActivities.vue'
 import TheProgress from './pages/TheProgress.vue'
 import { currentPage } from './router.js'
+import { routes } from './router.js'
 import { PAGE_PROGRESS, PAGE_TIMELINE, PAGE_ACTIVITIES } from './constants.js'
 </script>
 
@@ -12,9 +13,9 @@ import { PAGE_PROGRESS, PAGE_TIMELINE, PAGE_ACTIVITIES } from './constants.js'
   <TheHeader />
 
   <main class="flex flex-grow flex-col">
-    <TheTimeline v-show="currentPage === PAGE_TIMELINE" />
-    <TheActivitites v-show="currentPage === PAGE_ACTIVITIES" />
-    <TheProgress v-show="currentPage === PAGE_PROGRESS" />
+    <KeepAlive>
+      <component :is="routes[currentPage]" />
+    </KeepAlive>
   </main>
 
   <TheNav />
