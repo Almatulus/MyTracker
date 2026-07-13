@@ -1,6 +1,5 @@
 <script setup>
 import { computed } from 'vue'
-import { TrashIcon } from '@heroicons/vue/24/solid'
 import VButton from '@/components/VButton.vue'
 import VSelect from '@/components/VSelect.vue'
 import ActivitySecondsToComplete from './ActivitySecondsToComplete.vue'
@@ -8,6 +7,7 @@ import { isActivityItemValid } from '@/validators'
 import { deleteActivity, updateActivity } from '@/activities.js'
 import { PERIOD_SELECT_OPTIONS } from '@/constants.js'
 import { resetTimelineItem } from '@/timelineItems.js'
+import VIcon from './VIcon.vue'
 
 const props = defineProps({
   activity: {
@@ -42,7 +42,7 @@ function resetAndDeleteActivity(activity) {
     <div class="flex items-center justify-between">
       <span class="truncate text-l">{{ activity.name }}</span>
       <VButton @click="resetAndDeleteActivity(activity)" type="negative" class="p-1">
-        <TrashIcon class="h-6" />
+        <VIcon name="Trash" class="h-6" />
       </VButton>
     </div>
     <VSelect

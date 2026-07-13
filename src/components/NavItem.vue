@@ -2,6 +2,7 @@
 import { routeTo, currentPage } from '@/router'
 import { isMenuItemValid } from '@/validators'
 import { computed } from 'vue'
+import VIcon from './VIcon.vue'
 
 const props = defineProps({
   menuItem: {
@@ -20,7 +21,7 @@ const classes = computed(() => [
 <template>
   <li class="flex-1">
     <a :href="`#${menuItem.page}`" :class="classes" @click="routeTo(menuItem.page)">
-      <component class="h-6 w-6" :is="menuItem.icon"></component>{{ menuItem.page }}
+      <VIcon class="h-6 w-6" :name="menuItem.icon"></VIcon>{{ menuItem.page }}
     </a>
   </li>
 </template>
