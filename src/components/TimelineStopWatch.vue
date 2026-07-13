@@ -60,7 +60,7 @@ watch(
 <template>
   <div class="flex items-center gap-2">
     <VButton :disabled="!seconds" @click="reset" type="negative" class="p-1">
-      <VIcon :name="ICON_ARROW_PATH" class="h-6" />
+      <VIcon :name="ICON_ARROW_PATH" />
     </VButton>
 
     <span class="rounded bg-gray-200 px-2 py-1 flex grow font-mono text-lg">{{
@@ -68,11 +68,11 @@ watch(
     }}</span>
 
     <VButton v-if="isRunning" @click="stop" type="danger" class="p-1">
-      <VIcon :name="ICON_PAUSE" class="h-6" />
+      <VIcon :name="ICON_PAUSE" />
     </VButton>
 
     <VButton v-else @click="start" :disabled="isStartButtonDisabled" type="success" class="p-1">
-      <VIcon :name="ICON_PLAY" class="h-6" />
+      <VIcon :name="ICON_PLAY" />
     </VButton>
   </div>
 </template>

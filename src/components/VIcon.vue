@@ -1,6 +1,6 @@
 <script setup>
 import { ICONS } from '@/icons'
-import { isIconValid } from '@/validators'
+import { isIconValid, isNotEmptyString } from '@/validators'
 
 defineProps({
   name: {
@@ -8,9 +8,14 @@ defineProps({
     required: true,
     validator: isIconValid,
   },
+  classes: {
+    type: String,
+    default: 'h-6',
+    validator: isNotEmptyString,
+  },
 })
 </script>
 
 <template>
-  <component :is="ICONS[name]"></component>
+  <component :is="ICONS[name]" :class="classes"></component>
 </template>

@@ -33,7 +33,7 @@ async function submit() {
       class="w-full p-1 outline rounded text-md focus:outline-blue-500"
     />
     <VButton :type="BUTTON_TYPE_PRIMARY" :disabled="!activityName.trim()">
-      <VIcon :name="ICON_PLUS" class="h-8" />
+      <VIcon :name="ICON_PLUS" classes="h-8" />
     </VButton>
   </form>
 </template>
