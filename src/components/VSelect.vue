@@ -3,6 +3,7 @@ import VButton from './VButton.vue'
 import { isSelectValueValid, validateSelectOptions } from '@/validators.js'
 import { BUTTON_TYPE_NEGATIVE } from '@/constants.js'
 import VIcon from './VIcon.vue'
+import { ICON_XMARK } from '@/icons.js'
 
 defineProps({
   options: {
@@ -31,7 +32,7 @@ const model = defineModel({
       </option>
     </select>
     <VButton :type="BUTTON_TYPE_NEGATIVE" @click="model = null">
-      <VIcon name="XMark" class="h-8" />
+      <VIcon :name="ICON_XMARK" class="h-8" />
     </VButton>
   </div>
 </template>

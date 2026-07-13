@@ -1,4 +1,5 @@
 import { BUTTON_TYPES, MENU_ITEMS, HOURS_PER_DAY, MIDNIGHT_HOUR } from './constants'
+import { ICONS } from './icons'
 
 export function isPageValid(page) {
   return MENU_ITEMS.some((menuItem) => menuItem.page === page)
@@ -44,6 +45,10 @@ export function isSelectValueValid(value) {
 
 export function isHourValid(value) {
   return isNumber(value) && isBetween(value, MIDNIGHT_HOUR, HOURS_PER_DAY - 1)
+}
+
+export function isIconValid(icon) {
+  return Object.hasOwn(ICONS, icon)
 }
 
 export function isNumberOrNull(value) {

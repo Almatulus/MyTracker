@@ -5,6 +5,7 @@ import { ref, nextTick } from 'vue'
 import { generateId } from '@/functions'
 import { createActivity } from '@/activities'
 import VIcon from './VIcon.vue'
+import { ICON_PLUS } from '@/icons.js'
 
 const activityName = ref('')
 
@@ -32,7 +33,7 @@ async function submit() {
       class="w-full p-1 outline rounded text-md focus:outline-blue-500"
     />
     <VButton :type="BUTTON_TYPE_PRIMARY" :disabled="!activityName.trim()">
-      <VIcon name="Plus" class="h-8" />
+      <VIcon :name="ICON_PLUS" class="h-8" />
     </VButton>
   </form>
 </template>

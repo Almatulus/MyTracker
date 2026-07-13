@@ -8,6 +8,7 @@ import { deleteActivity, updateActivity } from '@/activities.js'
 import { PERIOD_SELECT_OPTIONS } from '@/constants.js'
 import { resetTimelineItem } from '@/timelineItems.js'
 import VIcon from './VIcon.vue'
+import { ICON_TRASH } from '@/icons.js'
 
 const props = defineProps({
   activity: {
@@ -42,7 +43,7 @@ function resetAndDeleteActivity(activity) {
     <div class="flex items-center justify-between">
       <span class="truncate text-l">{{ activity.name }}</span>
       <VButton @click="resetAndDeleteActivity(activity)" type="negative" class="p-1">
-        <VIcon name="Trash" class="h-6" />
+        <VIcon :name="ICON_TRASH" class="h-6" />
       </VButton>
     </div>
     <VSelect
