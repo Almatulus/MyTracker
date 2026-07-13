@@ -1,10 +1,26 @@
 import { ref } from 'vue'
 import { MIDNIGHT_HOUR, HOURS_PER_DAY } from './constants'
+import { currentHour } from './functions'
 
 export const timelineItems = ref(generateTimelineItems())
 
 export function updateTimelineItem(timelineItem, fields) {
   return Object.assign(timelineItem, fields)
+}
+
+export const timelineRefs = ref([])
+
+export function scrollToCurrentHour(isSmooth = true) {
+  scrollToHour(currentHour(), isSmooth)
+}
+
+export function scrollToHour(hour, isSmooth = true) {
+  const el = hour === MIDNIGHT_HOUR ? document.body : timelineRefs.value[hour].liRef
+
+  el.scrollIntoView({
+    block: 'center',
+    behavior: isSmooth ? 'smooth' : 'instant',
+  })
 }
 
 export function resetTimelineItem(activity) {

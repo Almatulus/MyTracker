@@ -20,9 +20,7 @@ export const currentPage = ref(normalizeHash())
 export const timelineRef = ref()
 
 export function routeTo(page) {
-  if (page === PAGE_TIMELINE && currentPage.value === PAGE_TIMELINE) {
-    timelineRef.value.scrollToHour(currentHour())
-  }
+  document.body.scrollIntoView()
 
   currentPage.value = page
 }
