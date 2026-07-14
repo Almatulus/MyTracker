@@ -24,14 +24,12 @@ export function scrollToHour(hour, isSmooth = true) {
 }
 
 export function resetTimelineItem(activity) {
-  timelineItems.value
-    .filter((item) => hasActivity(item, activity))
-    .forEach((item) =>
-      updateTimelineItem(item, {
-        activityId: null,
-        activitySeconds: 0,
-      }),
-    )
+  filterTimelineItemsByActivity(activity).forEach((item) =>
+    updateTimelineItem(item, {
+      activityId: null,
+      activitySeconds: 0,
+    }),
+  )
 }
 
 function generateTimelineItems() {
@@ -47,15 +45,12 @@ function generateTimelineItems() {
   return timelineItems
 }
 
-export function getTotalActivitySeconds(activity) {
-  return timelineItems.value
-    .filter((timelineItem) => hasActivity(timelineItem, activity))
-    .reduce(
-      (totalSeconds, timelineItem) => Math.round(timelineItem.activitySeconds + totalSeconds),
-      0,
-    )
+export function calculateTrackedActivitySeconds(activity) {
+  return filterTimelineItemsByActivity(activity)
+    .map(({ activitySeconds }) => activitySeconds)
+    .reduce((total, seconds) => Math.round(seconds + total), 0)
 }
 
-function hasActivity(timelineItem, activity) {
-  return timelineItem.activityId === activity.id
+function filterTimelineItemsByActivity(activity) {
+  return timelineItems.value.filter((item) => item.activityId === activity.id)
 }

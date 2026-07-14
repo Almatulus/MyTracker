@@ -1,7 +1,6 @@
 import { reactive, computed } from 'vue'
 import { generateId } from './functions'
 import { HUNDRED_PERCENT, SECONDS_IN_HOUR } from './constants'
-import { getTotalActivitySeconds } from './timelineItems'
 
 export const activities = reactive(generateActivities())
 export const activitySelectOptions = computed(() => generateActivitySelectOptions(activities))
@@ -21,10 +20,8 @@ export function deleteActivity(activity) {
   activities.splice(activities.indexOf(activity), 1)
 }
 
-export function getActivityProgress(activity) {
-  return Math.floor(
-    (getTotalActivitySeconds(activity) * HUNDRED_PERCENT) / activity.secondsToComplete,
-  )
+export function calculateActivityCompletionPercentage({ secondsToComplete }, trackedSeconds) {
+  return Math.floor((trackedSeconds * HUNDRED_PERCENT) / secondsToComplete)
 }
 
 function generateActivities() {
