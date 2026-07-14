@@ -3,7 +3,6 @@ import TimelineItem from '@/components/TimelineItem.vue'
 import { onActivated } from 'vue'
 import { timelineItems, timelineRefs } from '@/timelineItems'
 import { scrollToHour, scrollToCurrentHour } from '@/timelineItems'
-import { PAGE_TIMELINE } from '@/constants'
 
 onActivated(scrollToCurrentHour)
 </script>
