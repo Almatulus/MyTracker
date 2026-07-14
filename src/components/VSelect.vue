@@ -32,7 +32,7 @@ const model = defineModel({
       </option>
     </select>
     <VButton :type="BUTTON_TYPE_NEGATIVE" @click="model = null">
-      <VIcon :name="ICON_XMARK" classes="h-8" />
+      <VIcon :name="ICON_XMARK" class="h-8" />
     </VButton>
   </div>
 </template>

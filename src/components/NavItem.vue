@@ -21,7 +21,7 @@ const classes = computed(() => [
 <template>
   <li class="flex-1">
     <a :href="`#${menuItem.page}`" :class="classes" @click="routeTo(menuItem.page)">
-      <VIcon classes="h-6 w-6" :name="menuItem.icon"></VIcon>{{ menuItem.page }}
+      <VIcon class="h-6 w-6" :name="menuItem.icon"></VIcon>{{ menuItem.page }}
     </a>
   </li>
 </template>

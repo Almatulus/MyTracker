@@ -15,13 +15,13 @@ function handleClick() {
     class="sticky top-0 z-50 flex items-center justify-between p-2 border-b border-gray-400 bg-white"
   >
     <a :href="`#${PAGE_TIMELINE}`" class="flex items-center" @click="handleClick">
-      <VIcon :name="ICON_CLOCK" classes="w-10" />
+      <VIcon :name="ICON_CLOCK" class="w-10" />
       <p class="font-semibold">MyTracker</p>
     </a>
     <a :href="`#${PAGE_PROGRESS}`" class="text-sm" @click="routeTo(PAGE_PROGRESS)">
       <div v-if="true" class="flex items-center gap-1 font-medium">
         Day complete!
-        <VIcon :name="ICON_CHECK_CIRCLE" classes="h-7 text-green-500" />
+        <VIcon :name="ICON_CHECK_CIRCLE" class="h-7 text-green-500" />
       </div>
 
       <div v-else class="flex items-center gap-1 font-medium">
