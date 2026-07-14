@@ -5,6 +5,6 @@ import { activities, trackedActivities } from '@/activities'
 
 <template>
   <ul class="divide-y">
-    <ProgressItem v-for="activity in trackedActivities" :key="activity" :name="activity.name" />
+    <ProgressItem v-for="activity in trackedActivities" :key="activity" :activity="activity" />
   </ul>
 </template>

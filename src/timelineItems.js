@@ -40,7 +40,7 @@ function generateTimelineItems() {
     timelineItems.push({
       hour,
       activityId: null,
-      activitySeconds: 0,
+      activitySeconds: 500,
     })
   }
 
