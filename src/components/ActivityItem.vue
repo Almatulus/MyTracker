@@ -6,7 +6,7 @@ import ActivitySecondsToComplete from './ActivitySecondsToComplete.vue'
 import { isActivityItemValid } from '@/validators'
 import { deleteActivity, updateActivity } from '@/activities.js'
 import { PERIOD_SELECT_OPTIONS } from '@/constants.js'
-import { resetTimelineItem } from '@/timelineItems.js'
+import { resetTimelineItem, timelineItems } from '@/timelineItems.js'
 import VIcon from './VIcon.vue'
 import { ICON_TRASH } from '@/icons.js'
 
@@ -33,7 +33,7 @@ const modelValue = computed({
 })
 
 function resetAndDeleteActivity(activity) {
-  resetTimelineItem(activity)
+  resetTimelineItem(timelineItems.value, activity)
   deleteActivity(activity)
 }
 </script>

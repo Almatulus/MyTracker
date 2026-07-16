@@ -23,13 +23,19 @@ export function scrollToHour(hour, isSmooth = true) {
   })
 }
 
-export function resetTimelineItem(activity) {
-  filterTimelineItemsByActivity(activity).forEach((item) =>
+export function resetTimelineItem(timelineItems, activity) {
+  filterTimelineItemsByActivity(timelineItems, activity).forEach((item) =>
     updateTimelineItem(item, {
       activityId: null,
       activitySeconds: 0,
     }),
   )
+}
+
+export function calculateTrackedActivitySeconds(timelineItems, activity) {
+  return filterTimelineItemsByActivity(timelineItems, activity)
+    .map(({ activitySeconds }) => activitySeconds)
+    .reduce((total, seconds) => Math.round(seconds + total), 0)
 }
 
 function generateTimelineItems() {
@@ -45,12 +51,6 @@ function generateTimelineItems() {
   return timelineItems
 }
 
-export function calculateTrackedActivitySeconds(activity) {
-  return filterTimelineItemsByActivity(activity)
-    .map(({ activitySeconds }) => activitySeconds)
-    .reduce((total, seconds) => Math.round(seconds + total), 0)
-}
-
-function filterTimelineItemsByActivity(activity) {
-  return timelineItems.value.filter((item) => item.activityId === activity.id)
+function filterTimelineItemsByActivity(timelineItems, activity) {
+  return timelineItems.filter((item) => item.activityId === activity.id)
 }
