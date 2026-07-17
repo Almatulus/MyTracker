@@ -1,8 +1,9 @@
 <script setup>
 import ActivityItem from '@/components/ActivityItem.vue'
 import TheActivityForm from '@/components/TheActivityForm.vue'
-import TheActivitiesEmptyState from '@/components/TheActivitiesEmptyState.vue'
+import TheEmptyState from '@/components/TheEmptyState.vue'
 import { activities } from '@/activities'
+import { ICON_FACE_FROWN } from '@/icons'
 </script>
 
 <template>
@@ -11,7 +12,7 @@ import { activities } from '@/activities'
       <ActivityItem v-for="activity in activities" :key="activity.id" :activity="activity" />
     </ul>
 
-    <TheActivitiesEmptyState v-else />
+    <TheEmptyState :icon-name="ICON_FACE_FROWN" v-else />
 
     <TheActivityForm />
   </div>
