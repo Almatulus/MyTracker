@@ -34,15 +34,6 @@ export function getProgressColorClasses(progress) {
   return 'bg-green-500'
 }
 
-function generatePeriodSelectOptionsLabel(period) {
-  const hours = Math.floor(period / MINUTES_IN_HOUR)
-    .toString()
-    .padStart(2, 0)
-  const minutes = (period % MINUTES_IN_HOUR).toString().padStart(2, 0)
-
-  return `${hours}:${minutes}`
-}
-
 export function formatSeconds(seconds) {
   const date = new Date()
 
@@ -55,4 +46,13 @@ export function formatSeconds(seconds) {
 
 export function formatSecondsWithSign(seconds) {
   return `${seconds > 0 ? '+' : '-'}${formatSeconds(seconds)}`
+}
+
+function generatePeriodSelectOptionsLabel(period) {
+  const hours = Math.floor(period / MINUTES_IN_HOUR)
+    .toString()
+    .padStart(2, 0)
+  const minutes = (period % MINUTES_IN_HOUR).toString().padStart(2, 0)
+
+  return `${hours}:${minutes}`
 }
