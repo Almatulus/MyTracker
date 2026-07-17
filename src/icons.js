@@ -10,6 +10,7 @@ import {
   PauseIcon as Pause,
   PlayIcon as Play,
   XMarkIcon as XMark,
+  ClipboardDocumentListIcon as ClipboardDocumentList,
 } from '@heroicons/vue/24/solid'
 
 export const ICON_CLOCK = 'Clock'
@@ -23,6 +24,7 @@ export const ICON_ARROW_PATH = 'ArrowPath'
 export const ICON_PAUSE = 'Pause'
 export const ICON_PLAY = 'Play'
 export const ICON_XMARK = 'XMark'
+export const ICON_CLIPBOARD_DOCUMENT_LIST = 'ClipboardDocumentList'
 
 export const ICONS = {
   [ICON_CLOCK]: Clock,
@@ -36,4 +38,5 @@ export const ICONS = {
   [ICON_PAUSE]: Pause,
   [ICON_PLAY]: Play,
   [ICON_XMARK]: XMark,
+  [ICON_CLIPBOARD_DOCUMENT_LIST]: ClipboardDocumentList,
 }
