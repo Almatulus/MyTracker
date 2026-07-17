@@ -1,7 +1,7 @@
 <script setup>
 import { isTimeLineItemValid } from '@/validators.js'
 import VButton from './VButton.vue'
-import { computed, watch } from 'vue'
+import { computed, watchEffect } from 'vue'
 import { currentHour, formatSeconds } from '@/functions.js'
 import VIcon from './VIcon.vue'
 import { ICON_ARROW_PATH, ICON_PAUSE, ICON_PLAY } from '@/icons.js'
@@ -16,23 +16,18 @@ const props = defineProps({
   },
 })
 
-const { reset, stop, start, isRunning, seconds } = useStopWatch(
-  props.timelineItem.activitySeconds,
-  changeTimelineActivitySeconds,
-)
+const { reset, stop, start, isRunning, seconds } = useStopWatch(props.timelineItem.activitySeconds)
 
-watch(() => props.timelineItem.activityId, changeTimelineActivitySeconds)
-
-function changeTimelineActivitySeconds() {
+watchEffect(() => {
   updateTimelineItem(props.timelineItem, { activitySeconds: seconds.value })
-}
+})
 
 const formattedSeconds = computed(() => formatSeconds(props.timelineItem.activitySeconds))
 </script>
 
 <template>
   <div class="flex items-center gap-2">
-    <VButton :disabled="!seconds" @click="reset" type="negative" class="p-1">
+    <VButton :disabled="!timelineItem.activitySeconds" @click="reset" type="negative" class="p-1">
       <VIcon :name="ICON_ARROW_PATH" />
     </VButton>
 

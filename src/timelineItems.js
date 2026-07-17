@@ -27,7 +27,7 @@ export function resetTimelineItem(timelineItems, activity) {
   filterTimelineItemsByActivity(timelineItems, activity).forEach((item) =>
     updateTimelineItem(item, {
       activityId: null,
-      activitySeconds: 0,
+      activitySeconds: timelineItems.hour === currentHour() ? activity.activitySeconds : 0,
     }),
   )
 }

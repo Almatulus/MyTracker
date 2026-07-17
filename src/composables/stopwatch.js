@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 import { MILLISECONDS_IN_SECOND } from '@/constants.js'
 
-export function useStopWatch(initialSeconds, handleSecondsChange) {
+export function useStopWatch(initialSeconds) {
   const isRunning = ref(false)
   let timerId = null
   const seconds = ref(initialSeconds)
@@ -9,7 +9,6 @@ export function useStopWatch(initialSeconds, handleSecondsChange) {
   function start() {
     timerId = setInterval(() => {
       seconds.value++
-      handleSecondsChange()
     }, MILLISECONDS_IN_SECOND)
 
     isRunning.value = true
@@ -24,7 +23,6 @@ export function useStopWatch(initialSeconds, handleSecondsChange) {
     if (timerId) stop()
 
     seconds.value = 0
-    handleSecondsChange()
   }
 
   return {
