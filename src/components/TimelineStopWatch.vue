@@ -1,11 +1,12 @@
 <script setup>
 import { isTimeLineItemValid } from '@/validators.js'
 import VButton from './VButton.vue'
-import { computed } from 'vue'
+import { computed, watch } from 'vue'
 import { currentHour, formatSeconds } from '@/functions.js'
 import VIcon from './VIcon.vue'
 import { ICON_ARROW_PATH, ICON_PAUSE, ICON_PLAY } from '@/icons.js'
 import { useStopWatch } from '@/composables/stopwatch.js'
+import { updateTimelineItem } from '@/timelineItems.js'
 
 const props = defineProps({
   timelineItem: {
@@ -15,7 +16,16 @@ const props = defineProps({
   },
 })
 
-const { reset, stop, start, isRunning, seconds } = useStopWatch(props.timelineItem)
+const { reset, stop, start, isRunning, seconds } = useStopWatch(
+  props.timelineItem.activitySeconds,
+  changeTimelineActivitySeconds,
+)
+
+watch(() => props.timelineItem.activityId, changeTimelineActivitySeconds)
+
+function changeTimelineActivitySeconds() {
+  updateTimelineItem(props.timelineItem, { activitySeconds: seconds.value })
+}
 
 const formattedSeconds = computed(() => formatSeconds(props.timelineItem.activitySeconds))
 </script>
