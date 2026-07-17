@@ -1,9 +1,10 @@
 <script setup>
-import { PAGE_TIMELINE, PAGE_PROGRESS } from '@/constants'
+import { PAGE_TIMELINE } from '@/constants'
 import { currentPage, routeTo } from '@/router'
 import { scrollToCurrentHour } from '@/timelineItems'
 import VIcon from './VIcon.vue'
-import { ICON_CHECK_CIRCLE, ICON_CLOCK } from '@/icons.js'
+import { ICON_CLOCK } from '@/icons.js'
+import TheHeaderProgress from './TheHeaderProgress.vue'
 
 function handleClick() {
   currentPage.value === PAGE_TIMELINE ? scrollToCurrentHour(true) : routeTo(PAGE_TIMELINE)
@@ -18,16 +19,7 @@ function handleClick() {
       <VIcon :name="ICON_CLOCK" class="w-10" />
       <p class="font-semibold">MyTracker</p>
     </a>
-    <a :href="`#${PAGE_PROGRESS}`" class="text-sm" @click="routeTo(PAGE_PROGRESS)">
-      <div v-if="true" class="flex items-center gap-1 font-medium">
-        Day complete!
-        <VIcon :name="ICON_CHECK_CIRCLE" class="h-7 text-green-500" />
-      </div>
 
-      <div v-else class="flex items-center gap-1 font-medium">
-        Progress: 20%
-        <div class="bg-red-500 h-3 w-3 rounded-full"></div>
-      </div>
-    </a>
+    <TheHeaderProgress />
   </header>
 </template>
