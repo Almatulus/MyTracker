@@ -6,12 +6,23 @@ import {
   SECONDS_IN_DAY,
   SECONDS_IN_MINUTE,
 } from '@/constants'
-import { computed, ref, watch } from 'vue'
+import { computed, ref, watch, onActivated, onDeactivated } from 'vue'
 
 const indicatorRef = ref()
 let secondsSinceMidnight = ref(calculateSecondsSinceMidnight())
+let timer = null
 
-setInterval(() => secondsSinceMidnight.value++, MILLISECONDS_IN_SECOND)
+onActivated(() => {
+  secondsSinceMidnight = calculateSecondsSinceMidnight()
+
+  timer = setInterval(
+    () => secondsSinceMidnight.value++,
+
+    MILLISECONDS_IN_SECOND,
+  )
+})
+
+onDeactivated(() => clearInterval(timer))
 
 watch(secondsSinceMidnight, () => {
   if (secondsSinceMidnight.value > SECONDS_IN_DAY) secondsSinceMidnight.value = 0
