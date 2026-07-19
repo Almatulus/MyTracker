@@ -3,12 +3,14 @@ import TimelineItem from '@/components/TimelineItem.vue'
 import { onActivated } from 'vue'
 import { timelineItems, timelineRefs } from '@/timelineItems'
 import { scrollToHour, scrollToCurrentHour } from '@/timelineItems'
+import TheTimelineIndicator from '@/components/TheTimelineIndicator.vue'
 
 onActivated(scrollToCurrentHour)
 </script>
 
 <template>
-  <div class="mt-10">
+  <div class="mt-10 relative">
+    <TheTimelineIndicator />
     <ul>
       <TimelineItem
         v-for="timeline in timelineItems"
