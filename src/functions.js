@@ -7,10 +7,6 @@ import {
   HUNDRED_PERCENT,
 } from './constants.js'
 
-export function currentHour() {
-  return new Date().getHours()
-}
-
 export function generateId() {
   return Date.now().toString(36) + Math.random().toString(36).substring(2)
 }

@@ -2,11 +2,12 @@
 import { isTimeLineItemValid } from '@/validators.js'
 import VButton from './VButton.vue'
 import { computed, watchEffect } from 'vue'
-import { currentHour, formatSeconds } from '@/functions.js'
+import { formatSeconds } from '@/functions.js'
 import VIcon from './VIcon.vue'
 import { ICON_ARROW_PATH, ICON_PAUSE, ICON_PLAY } from '@/icons.js'
 import { useStopWatch } from '@/composables/stopwatch.js'
 import { updateTimelineItem } from '@/timelineItems.js'
+import { now } from '@/time.js'
 
 const props = defineProps({
   timelineItem: {
@@ -17,6 +18,12 @@ const props = defineProps({
 })
 
 const { reset, stop, start, isRunning, seconds } = useStopWatch(props.timelineItem.activitySeconds)
+
+watchEffect(() => {
+  if (props.timelineItem.hour !== now.value.getHours() && isRunning.value) {
+    stop()
+  }
+})
 
 watchEffect(() => {
   updateTimelineItem(props.timelineItem, { activitySeconds: seconds.value })
@@ -42,7 +49,7 @@ const formattedSeconds = computed(() => formatSeconds(props.timelineItem.activit
     <VButton
       v-else
       @click="start"
-      :disabled="timelineItem.hour !== currentHour()"
+      :disabled="timelineItem.hour !== now.getHours()"
       type="success"
       class="p-1"
     >

@@ -1,7 +1,7 @@
 import { HUNDRED_PERCENT, MILLISECONDS_IN_SECOND, SECONDS_IN_DAY } from '@/constants'
 import { computed, ref } from 'vue'
 
-const now = ref(new Date())
+export const now = ref(new Date())
 let timer = null
 
 const midnight = computed(() => new Date(now.value).setHours(0, 0, 0, 0))
