@@ -1,11 +1,11 @@
-import { reactive, computed } from 'vue'
+import { ref, computed } from 'vue'
 import { generateId } from './functions'
 import { HUNDRED_PERCENT, SECONDS_IN_HOUR } from './constants'
 
-export const activities = reactive(generateActivities())
-export const activitySelectOptions = computed(() => generateActivitySelectOptions(activities))
+export const activities = ref(generateActivities())
+export const activitySelectOptions = computed(() => generateActivitySelectOptions(activities.value))
 export const trackedActivities = computed(() =>
-  activities.filter((activity) => activity.secondsToComplete),
+  activities.value.filter((activity) => activity.secondsToComplete),
 )
 
 export function updateActivity(activity, fields) {
@@ -13,11 +13,11 @@ export function updateActivity(activity, fields) {
 }
 
 export function createActivity(activity) {
-  activities.push(activity)
+  activities.value.push(activity)
 }
 
 export function deleteActivity(activity) {
-  activities.splice(activities.indexOf(activity), 1)
+  activities.value.splice(activities.value.indexOf(activity), 1)
 }
 
 export function calculateActivityCompletionPercentage({ secondsToComplete }, trackedSeconds) {
