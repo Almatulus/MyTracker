@@ -3,6 +3,8 @@ import { routeTo, currentPage } from '@/router'
 import { isMenuItemValid } from '@/validators'
 import { computed } from 'vue'
 import VIcon from './VIcon.vue'
+import { PAGE_TIMELINE } from '@/constants.js'
+import { scrollToCurrentHour } from '@/timelineItems.js'
 
 const props = defineProps({
   menuItem: {
@@ -14,13 +16,19 @@ const props = defineProps({
 
 const classes = computed(() => [
   'flex flex-col items-center capitalize font-medium p-2',
-  { 'bg-slate-300 pointer-events-none': props.menuItem.page === currentPage.value },
+  { 'bg-slate-300': props.menuItem.page === currentPage.value },
 ])
+
+function handleClick() {
+  currentPage.value === PAGE_TIMELINE && props.menuItem.page === PAGE_TIMELINE
+    ? scrollToCurrentHour(true)
+    : routeTo(props.menuItem.page)
+}
 </script>
 
 <template>
   <li class="flex-1">
-    <a :href="`#${menuItem.page}`" :class="classes" @click="routeTo(menuItem.page)">
+    <a :href="`#${menuItem.page}`" :class="classes" @click="handleClick">
       <VIcon class="h-6 w-6" :name="menuItem.icon"></VIcon>{{ menuItem.page }}
     </a>
   </li>
