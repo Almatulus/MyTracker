@@ -1,10 +1,27 @@
 import { HUNDRED_PERCENT, MILLISECONDS_IN_SECOND, SECONDS_IN_DAY } from '@/constants'
 import { computed, ref } from 'vue'
 
-const date = new Date()
-date.setHours(0, 0)
+export function today() {
+  const today = new Date()
 
-export const now = ref(new Date())
+  today.setHours(0, 0)
+
+  return today
+}
+
+export function tomorrow() {
+  const tomorrow = new Date()
+
+  tomorrow.setDate(tomorrow.getDate() + 1)
+
+  return tomorrow
+}
+
+export function isToday(date) {
+  return date.toDateString() === today().toDateString()
+}
+
+export const now = ref(today())
 let timer = null
 
 const midnight = computed(() => new Date(now.value).setHours(0, 0, 0, 0))
@@ -17,7 +34,7 @@ const secondsSinceMidnight = computed(() => (now.value - midnight.value) / MILLI
 
 export function startTimer() {
   // now.value = new Date()
-  now.value = date
+  now.value = today()
 
   timer = setInterval(
     () => (now.value = new Date(now.value.getTime() + MILLISECONDS_IN_SECOND * 60)),

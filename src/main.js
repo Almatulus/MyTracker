@@ -4,6 +4,7 @@ import './css/style.css'
 import * as storage from './storage.js'
 import { timelineItems } from './timelineItems.js'
 import { activities } from './activities.js'
+import { isToday } from './time.js'
 
 loadState()
 
@@ -21,8 +22,8 @@ function saveState() {
 function loadState() {
   const state = storage.load()
 
-  timelineItems.value = state.timelineItems
-  activities.value = state.activities
+  timelineItems.value = isToday(new Date(state.date)) ? state.timelineItems : timelineItems.value
+  activities.value = state.activities || activities.value
 }
 
 createApp(App).mount('#app')
