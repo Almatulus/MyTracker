@@ -1,7 +1,7 @@
 <script setup>
 import { isTimeLineItemValid } from '@/validators.js'
 import VButton from './VButton.vue'
-import { computed, watchEffect } from 'vue'
+import { computed, onMounted, watch, watchEffect } from 'vue'
 import { formatSeconds } from '@/functions.js'
 import VIcon from './VIcon.vue'
 import { ICON_ARROW_PATH, ICON_PAUSE, ICON_PLAY } from '@/icons.js'
@@ -29,7 +29,15 @@ watchEffect(() => {
   updateTimelineItem(props.timelineItem, { activitySeconds: seconds.value })
 })
 
+watch(isRunning, () => {
+  updateTimelineItem(props.timelineItem, { isActive: isRunning.value })
+})
+
 const formattedSeconds = computed(() => formatSeconds(props.timelineItem.activitySeconds))
+
+onMounted(() => {
+  if (props.timelineItem.isActive) start()
+})
 </script>
 
 <template>

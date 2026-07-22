@@ -45,6 +45,7 @@ function generateTimelineItems() {
       hour,
       activityId: null,
       activitySeconds: 0,
+      isActive: false,
     })
   }
 
