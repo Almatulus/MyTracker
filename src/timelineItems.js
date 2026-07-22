@@ -1,8 +1,26 @@
 import { ref } from 'vue'
-import { MIDNIGHT_HOUR, HOURS_PER_DAY } from './constants'
+import { MIDNIGHT_HOUR, HOURS_PER_DAY, MILLISECONDS_IN_SECOND } from './constants'
 import { now } from './time'
 
 export const timelineItems = ref(generateTimelineItems())
+
+let timelineItemTimer = null
+
+export function startTimelineItemTimer(activeTimelineItem) {
+  timelineItemTimer = setInterval(() => {
+    updateTimelineItem(activeTimelineItem, {
+      activitySeconds: activeTimelineItem.activitySeconds + 1,
+    })
+  }, MILLISECONDS_IN_SECOND)
+}
+
+export function stopTimelineIemTimer() {
+  clearInterval(timelineItemTimer)
+}
+
+export function findActiveTimelineItem() {
+  return timelineItems.value.find((timelineItem) => timelineItem.isActive)
+}
 
 export function updateTimelineItem(timelineItem, fields) {
   return Object.assign(timelineItem, fields)
