@@ -1,5 +1,5 @@
 <script setup>
-import VSelect from './VSelect.vue'
+import VSelect from '../ui/VSelect.vue'
 import { isTimeLineItemValid } from '@/validators.js'
 import TimelineHour from './TimelineHour.vue'
 import { computed, ref } from 'vue'

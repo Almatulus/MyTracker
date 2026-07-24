@@ -2,7 +2,7 @@
 import { routeTo, currentPage } from '@/router'
 import { isMenuItemValid } from '@/validators'
 import { computed } from 'vue'
-import VIcon from './VIcon.vue'
+import VIcon from '../ui/VIcon.vue'
 import { PAGE_TIMELINE } from '@/constants.js'
 import { scrollToCurrentHour } from '@/timelineItems.js'
 

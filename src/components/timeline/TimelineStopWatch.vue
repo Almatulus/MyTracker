@@ -1,9 +1,9 @@
 <script setup>
 import { isTimeLineItemValid } from '@/validators.js'
-import VButton from './VButton.vue'
+import VButton from '../ui/VButton.vue'
 import { computed } from 'vue'
 import { formatSeconds } from '@/functions.js'
-import VIcon from './VIcon.vue'
+import VIcon from '../ui/VIcon.vue'
 import { ICON_ARROW_PATH, ICON_PAUSE, ICON_PLAY } from '@/icons.js'
 import {
   isTimerRunning,

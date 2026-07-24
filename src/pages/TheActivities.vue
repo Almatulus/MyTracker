@@ -1,7 +1,7 @@
 <script setup>
-import ActivityItem from '@/components/ActivityItem.vue'
-import TheActivityForm from '@/components/TheActivityForm.vue'
-import TheEmptyState from '@/components/TheEmptyState.vue'
+import ActivityItem from '@/components/activities/ActivityItem.vue'
+import TheActivityForm from '@/components/activities/TheActivityForm.vue'
+import TheEmptyState from '@/components/ui/TheEmptyState.vue'
 import { activities } from '@/activities'
 import { ICON_FACE_FROWN } from '@/icons'
 </script>

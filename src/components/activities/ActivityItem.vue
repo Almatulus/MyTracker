@@ -1,13 +1,13 @@
 <script setup>
 import { computed } from 'vue'
-import VButton from '@/components/VButton.vue'
-import VSelect from '@/components/VSelect.vue'
+import VButton from '@/components/ui/VButton.vue'
+import VSelect from '@/components/ui/VSelect.vue'
 import RemainingActivitySeconds from './RemainingActivitySeconds.vue'
 import { isActivityItemValid } from '@/validators'
 import { deleteActivity, updateActivity } from '@/activities.js'
 import { PERIOD_SELECT_OPTIONS } from '@/constants.js'
 import { resetTimelineItem, timelineItems } from '@/timelineItems.js'
-import VIcon from './VIcon.vue'
+import VIcon from '../ui/VIcon.vue'
 import { ICON_TRASH } from '@/icons.js'
 
 const props = defineProps({

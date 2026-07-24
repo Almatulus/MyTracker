@@ -1,10 +1,10 @@
 <script setup>
-import VButton from '@/components/VButton.vue'
+import VButton from '@/components/ui/VButton.vue'
 import { BUTTON_TYPE_PRIMARY } from '@/constants'
 import { ref, nextTick } from 'vue'
 import { generateId } from '@/functions'
 import { createActivity } from '@/activities'
-import VIcon from './VIcon.vue'
+import VIcon from '../ui/VIcon.vue'
 import { ICON_PLUS } from '@/icons.js'
 
 const activityName = ref('')
