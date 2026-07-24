@@ -15,13 +15,7 @@ export const secondsSinceMidnightInPercent = computed(() => {
 })
 
 export function today() {
-  const today = new Date()
-
-  // today.setHours(21)
-  // today.setMinutes(59)
-  // today.setSeconds(55)
-
-  return today
+  return new Date()
 }
 
 export function tomorrow() {
@@ -39,16 +33,8 @@ export function isToday(date) {
 const secondsSinceMidnight = computed(() => (now.value - midnight.value) / MILLISECONDS_IN_SECOND)
 
 export function startCurrentDateTimer() {
-  // currentDateTimer = setInterval(
-  //   () => (now.value = today()),
-
-  //   MILLISECONDS_IN_SECOND,
-  // )
-
   setInterval(
-    () => {
-      now.value = new Date(now.value.getTime() + MILLISECONDS_IN_SECOND)
-    },
+    () => (now.value = today()),
 
     MILLISECONDS_IN_SECOND,
   )

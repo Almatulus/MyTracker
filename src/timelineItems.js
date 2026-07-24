@@ -1,17 +1,28 @@
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { MIDNIGHT_HOUR, HOURS_PER_DAY } from './constants'
-import { endOfHour, isToday, today, toSeconds } from './time'
+import { endOfHour, isToday, now, today, toSeconds } from './time'
+import { stopTimelineItemTimer } from './timelineItemTimer'
 
 export const timelineItems = ref([])
 export const activeTimelineItem = computed(() =>
   timelineItems.value.find((timelineItem) => timelineItem.isActive),
 )
 
+export const timelineRefs = ref([])
+
+watch(now, (after, before) => {
+  if (activeTimelineItem.value && activeTimelineItem.value.hour !== after.getHours()) {
+    stopTimelineItemTimer()
+  }
+
+  if (before.getHours() !== after.getHours() && after.getHours() === MIDNIGHT_HOUR) {
+    resetTimelineItems()
+  }
+})
+
 export function updateTimelineItem(timelineItem, fields) {
   return Object.assign(timelineItem, fields)
 }
-
-export const timelineRefs = ref([])
 
 export function scrollToCurrentHour(isSmooth = false) {
   scrollToHour(today().getHours(), isSmooth)
