@@ -12,6 +12,7 @@ import {
   stopTimelineItemTimer,
 } from '@/timelineItemTimer.js'
 import { now } from '@/time.js'
+import { BUTTON_TYPE_DANGER, BUTTON_TYPE_NEGATIVE, BUTTON_TYPE_SUCCESS } from '@/constants.js'
 
 const props = defineProps({
   timelineItem: {
@@ -29,7 +30,7 @@ const formattedSeconds = computed(() => formatSeconds(props.timelineItem.activit
     <VButton
       :disabled="!timelineItem.activitySeconds"
       @click="resetTimelineItemTimer(props.timelineItem)"
-      type="negative"
+      :type="BUTTON_TYPE_NEGATIVE"
       class="p-1"
     >
       <VIcon :name="ICON_ARROW_PATH" />
@@ -41,8 +42,8 @@ const formattedSeconds = computed(() => formatSeconds(props.timelineItem.activit
 
     <VButton
       v-if="isTimerRunning && timelineItem.hour === now.getHours()"
-      @click="stopTimelineItemTimer(timelineItem)"
-      type="danger"
+      @click="stopTimelineItemTimer"
+      :type="BUTTON_TYPE_DANGER"
       class="p-1"
     >
       <VIcon :name="ICON_PAUSE" />
@@ -52,7 +53,7 @@ const formattedSeconds = computed(() => formatSeconds(props.timelineItem.activit
       v-else
       @click="startTimelineItemTimer(timelineItem)"
       :disabled="timelineItem.hour !== now.getHours()"
-      type="success"
+      :type="BUTTON_TYPE_SUCCESS"
       class="p-1"
     >
       <VIcon :name="ICON_PLAY" />
