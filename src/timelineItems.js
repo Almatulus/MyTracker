@@ -35,6 +35,14 @@ export function resetTimelineItem(timelineItems, activity) {
   )
 }
 
+export function resetTimelineItems(timelineItems) {
+  return timelineItems.map((timelineItem) => ({
+    ...timelineItem,
+    activitySeconds: 0,
+    isActive: false,
+  }))
+}
+
 export function calculateTrackedActivitySeconds(timelineItems, activity) {
   return filterTimelineItemsByActivity(timelineItems, activity)
     .map(({ activitySeconds }) => activitySeconds)

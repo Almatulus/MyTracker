@@ -1,6 +1,6 @@
 import { APP_NAME } from './constants'
-import { endOfHour, isToday, today, toSeconds } from './time'
-import { activeTimelineItem, timelineItems } from './timelineItems'
+import { endOfHour, isToday, today, tomorrow, toSeconds } from './time'
+import { activeTimelineItem, timelineItems, resetTimelineItems } from './timelineItems'
 import { activities } from './activities'
 import { startTimelineItemTimer, stopTimelineItemTimer } from './timelineItemTimer'
 
@@ -20,7 +20,7 @@ export function saveState() {
     JSON.stringify({
       timelineItems: timelineItems.value,
       activities: activities.value,
-      lastActiveAt: today(),
+      lastActiveAt: tomorrow(),
     }),
   )
 }
@@ -32,9 +32,13 @@ export function loadState() {
 
   const lastActiveAt = new Date(state.lastActiveAt)
 
-  timelineItems.value = isToday(lastActiveAt)
-    ? syncIdleSeconds(state.timelineItems, lastActiveAt)
-    : timelineItems.value
+  timelineItems.value = state.timelineItems ?? timelineItems.value
+
+  if (activeTimelineItem.value && isToday(lastActiveAt)) {
+    timelineItems.value = syncIdleSeconds(state.timelineItems, lastActiveAt)
+  } else if (state.timelineItems && !isToday(lastActiveAt)) {
+    timelineItems.value = resetTimelineItems(state.timelineItems)
+  }
 
   activities.value = state.activities || activities.value
 }
