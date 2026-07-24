@@ -6,8 +6,22 @@ import {
 } from '@/constants'
 import { computed, ref } from 'vue'
 
+export const now = ref(today())
+
+const midnight = computed(() => new Date(now.value).setHours(0, 0, 0, 0))
+
+export const secondsSinceMidnightInPercent = computed(() => {
+  return (HUNDRED_PERCENT * secondsSinceMidnight.value) / SECONDS_IN_DAY
+})
+
 export function today() {
-  return new Date()
+  const today = new Date()
+
+  // today.setHours(21)
+  // today.setMinutes(59)
+  // today.setSeconds(55)
+
+  return today
 }
 
 export function tomorrow() {
@@ -22,29 +36,22 @@ export function isToday(date) {
   return date.toDateString() === today().toDateString()
 }
 
-export const now = ref(today())
-let currentDateTimer = null
-
-const midnight = computed(() => new Date(now.value).setHours(0, 0, 0, 0))
-
-export const secondsSinceMidnightInPercent = computed(() => {
-  return (HUNDRED_PERCENT * secondsSinceMidnight.value) / SECONDS_IN_DAY
-})
-
 const secondsSinceMidnight = computed(() => (now.value - midnight.value) / MILLISECONDS_IN_SECOND)
 
 export function startCurrentDateTimer() {
-  now.value = today()
+  // currentDateTimer = setInterval(
+  //   () => (now.value = today()),
 
-  currentDateTimer = setInterval(
-    () => (now.value = today()),
+  //   MILLISECONDS_IN_SECOND,
+  // )
+
+  setInterval(
+    () => {
+      now.value = new Date(now.value.getTime() + MILLISECONDS_IN_SECOND)
+    },
 
     MILLISECONDS_IN_SECOND,
   )
-}
-
-export function stopCurrentDateTimer() {
-  clearInterval(currentDateTimer)
 }
 
 export function endOfHour(date) {
