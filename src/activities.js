@@ -1,5 +1,4 @@
 import { ref, computed } from 'vue'
-import { generateId } from './functions'
 import { HUNDRED_PERCENT } from './constants'
 
 export const activities = ref([])
@@ -7,6 +6,10 @@ export const activitySelectOptions = computed(() => generateActivitySelectOption
 export const trackedActivities = computed(() =>
   activities.value.filter((activity) => activity.secondsToComplete),
 )
+
+export function initializeActivities(state) {
+  activities.value = state.activities || []
+}
 
 export function updateActivity(activity, fields) {
   return Object.assign(activity, fields)
