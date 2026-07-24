@@ -9,8 +9,6 @@ import { computed, ref } from 'vue'
 export function today() {
   const today = new Date()
 
-  // today.setHours(22, 0)
-
   return today
 }
 
@@ -38,7 +36,6 @@ export const secondsSinceMidnightInPercent = computed(() => {
 const secondsSinceMidnight = computed(() => (now.value - midnight.value) / MILLISECONDS_IN_SECOND)
 
 export function startCurrentDateTimer() {
-  // now.value = new Date()
   now.value = today()
 
   currentDateTimer = setInterval(
