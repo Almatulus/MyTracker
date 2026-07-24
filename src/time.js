@@ -7,9 +7,7 @@ import {
 import { computed, ref } from 'vue'
 
 export function today() {
-  const today = new Date()
-
-  return today
+  return new Date()
 }
 
 export function tomorrow() {
@@ -39,7 +37,7 @@ export function startCurrentDateTimer() {
   now.value = today()
 
   currentDateTimer = setInterval(
-    () => (now.value = new Date(now.value.getTime() + MILLISECONDS_IN_SECOND)),
+    () => (now.value = today()),
 
     MILLISECONDS_IN_SECOND,
   )

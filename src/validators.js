@@ -13,16 +13,8 @@ export function isButtonTypeValid(type) {
   return BUTTON_TYPES.includes(type)
 }
 
-export function validateTimeLineItems(timelineItems) {
-  return timelineItems.every(isTimeLineItemValid)
-}
-
 export function isTimeLineItemValid({ hour }) {
   return isHourValid(hour)
-}
-
-export function validateActivityItems(activities) {
-  return activities.every(isActivityItemValid)
 }
 
 export function isActivityItemValid({ id, name, secondsToComplete }) {
@@ -51,12 +43,12 @@ export function isIconValid(icon) {
   return Object.hasOwn(ICONS, icon)
 }
 
-export function isNumberOrNull(value) {
-  return isNumber(value) || isNull(value)
-}
-
 export function isNumber(value) {
   return typeof value === 'number'
+}
+
+function isNumberOrNull(value) {
+  return isNumber(value) || isNull(value)
 }
 
 function isString(value) {
@@ -67,16 +59,12 @@ function isBetween(value, start, end) {
   return value >= start && value <= end
 }
 
-export function isNull(value) {
+function isNull(value) {
   return value === null
 }
 
 function isNotEmpty(value) {
   return value.length > 0
-}
-
-export function isUndefined(value) {
-  return value === undefined
 }
 
 export function isObject(value) {

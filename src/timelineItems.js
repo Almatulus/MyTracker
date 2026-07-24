@@ -1,6 +1,6 @@
 import { computed, ref } from 'vue'
 import { MIDNIGHT_HOUR, HOURS_PER_DAY } from './constants'
-import { endOfHour, isToday, now, today, toSeconds } from './time'
+import { endOfHour, isToday, today, toSeconds } from './time'
 
 export const timelineItems = ref([])
 export const activeTimelineItem = computed(() =>
@@ -14,7 +14,7 @@ export function updateTimelineItem(timelineItem, fields) {
 export const timelineRefs = ref([])
 
 export function scrollToCurrentHour(isSmooth = false) {
-  scrollToHour(now.value.getHours(), isSmooth)
+  scrollToHour(today().getHours(), isSmooth)
 }
 
 export function scrollToHour(hour, isSmooth = true) {
@@ -30,7 +30,7 @@ export function resetTimelineItem(timelineItems, activity) {
   filterTimelineItemsByActivity(timelineItems, activity).forEach((item) =>
     updateTimelineItem(item, {
       activityId: null,
-      activitySeconds: timelineItems.hour === now.value.getHours() ? activity.activitySeconds : 0,
+      activitySeconds: timelineItems.hour === today().getHours() ? activity.activitySeconds : 0,
     }),
   )
 }
