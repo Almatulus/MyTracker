@@ -1,7 +1,7 @@
 <script setup>
 import { isHourValid } from '@/validators'
 import { computed } from 'vue'
-import { now } from '@/time'
+import { now } from '@/modules/time'
 
 const props = defineProps({
   hour: {

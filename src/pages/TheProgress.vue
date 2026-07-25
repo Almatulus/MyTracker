@@ -1,8 +1,8 @@
 <script setup>
 import ProgressItem from '@/components/progress/ProgressItem.vue'
-import { activities, trackedActivities } from '@/activities'
+import { activities, trackedActivities } from '@/modules/activities'
 import TheEmptyState from '@/components/ui/TheEmptyState.vue'
-import { ICON_CLIPBOARD_DOCUMENT_LIST } from '@/icons'
+import { ICON_CLIPBOARD_DOCUMENT_LIST } from '@/modules/icons'
 </script>
 
 <template>

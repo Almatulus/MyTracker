@@ -4,11 +4,11 @@ import VButton from '@/components/ui/VButton.vue'
 import VSelect from '@/components/ui/VSelect.vue'
 import RemainingActivitySeconds from './RemainingActivitySeconds.vue'
 import { isActivityItemValid } from '@/validators'
-import { deleteActivity, updateActivity } from '@/activities.js'
+import { deleteActivity, updateActivity } from '@/modules/activities.js'
 import { PERIOD_SELECT_OPTIONS } from '@/constants.js'
-import { resetTimelineItem, timelineItems } from '@/timelineItems.js'
+import { resetTimelineItem, timelineItems } from '@/modules/timelineItems.js'
 import VIcon from '../ui/VIcon.vue'
-import { ICON_TRASH } from '@/icons.js'
+import { ICON_TRASH } from '@/modules/icons.js'
 
 const props = defineProps({
   activity: {

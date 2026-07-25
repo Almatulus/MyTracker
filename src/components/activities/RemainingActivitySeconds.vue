@@ -1,7 +1,7 @@
 <script setup>
 import { isActivityItemValid } from '@/validators'
 import { computed } from 'vue'
-import { calculateTrackedActivitySeconds, timelineItems } from '@/timelineItems'
+import { calculateTrackedActivitySeconds, timelineItems } from '@/modules/timelineItems'
 import { formatSecondsWithSign } from '@/functions'
 
 const props = defineProps({

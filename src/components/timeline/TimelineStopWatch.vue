@@ -4,14 +4,14 @@ import VButton from '../ui/VButton.vue'
 import { computed } from 'vue'
 import { formatSeconds } from '@/functions.js'
 import VIcon from '../ui/VIcon.vue'
-import { ICON_ARROW_PATH, ICON_PAUSE, ICON_PLAY } from '@/icons.js'
+import { ICON_ARROW_PATH, ICON_PAUSE, ICON_PLAY } from '@/modules/icons.js'
 import {
   isTimerRunning,
   resetTimelineItemTimer,
   startTimelineItemTimer,
   stopTimelineItemTimer,
-} from '@/timelineItemTimer.js'
-import { now } from '@/time.js'
+} from '@/modules/timelineItemTimer.js'
+import { now } from '@/modules/time.js'
 import { BUTTON_TYPE_DANGER, BUTTON_TYPE_NEGATIVE, BUTTON_TYPE_SUCCESS } from '@/constants.js'
 
 const props = defineProps({

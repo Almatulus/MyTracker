@@ -1,5 +1,5 @@
 import { generatePeriodSelectOptions } from './functions'
-import { ICON_CLOCK, ICON_LIST_BULLET, ICON_CHART_BAR } from './icons'
+import { ICON_CLOCK, ICON_LIST_BULLET, ICON_CHART_BAR } from './modules/icons'
 
 export const APP_NAME = 'AlmaTracker'
 

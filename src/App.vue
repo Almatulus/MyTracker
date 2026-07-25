@@ -1,8 +1,8 @@
 <script setup>
 import TheHeader from './components/layout/TheHeader.vue'
 import TheNav from './components/layout/TheNav.vue'
-import { currentPage } from './router.js'
-import { routes } from './router.js'
+import { currentPage } from './modules/router.js'
+import { routes } from './modules/router.js'
 import { PAGE_PROGRESS, PAGE_TIMELINE, PAGE_ACTIVITIES } from './constants.js'
 </script>
 

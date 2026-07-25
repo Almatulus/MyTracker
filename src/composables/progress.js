@@ -1,7 +1,7 @@
-import { calculateActivityCompletionPercentage } from '@/activities'
+import { calculateActivityCompletionPercentage } from '@/modules/activities'
 import { computed } from 'vue'
 import { formatSeconds, getProgressColorClasses } from '@/functions'
-import { calculateTrackedActivitySeconds, timelineItems } from '@/timelineItems'
+import { calculateTrackedActivitySeconds, timelineItems } from '@/modules/timelineItems'
 
 export function useProgress(activity) {
   const percent = computed(() =>

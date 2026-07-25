@@ -3,7 +3,7 @@ import VButton from './VButton.vue'
 import { isSelectValueValid, validateSelectOptions } from '@/validators.js'
 import { BUTTON_TYPE_NEGATIVE } from '@/constants.js'
 import VIcon from './VIcon.vue'
-import { ICON_XMARK } from '@/icons.js'
+import { ICON_XMARK } from '@/modules/icons.js'
 
 defineProps({
   options: {

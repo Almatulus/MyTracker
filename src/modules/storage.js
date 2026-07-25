@@ -1,4 +1,4 @@
-import { APP_NAME } from './constants'
+import { APP_NAME } from '../constants'
 import { today } from './time'
 import { activeTimelineItem, timelineItems, initializeTimelineItems } from './timelineItems'
 import { activities, initializeActivities } from './activities'

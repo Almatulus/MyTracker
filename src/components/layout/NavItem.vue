@@ -1,10 +1,10 @@
 <script setup>
-import { routeTo, currentPage } from '@/router'
+import { routeTo, currentPage } from '@/modules/router.js'
 import { isMenuItemValid } from '@/validators'
 import { computed } from 'vue'
 import VIcon from '../ui/VIcon.vue'
 import { PAGE_TIMELINE } from '@/constants.js'
-import { scrollToCurrentHour } from '@/timelineItems.js'
+import { scrollToCurrentHour } from '@/modules/timelineItems.js'
 
 const props = defineProps({
   menuItem: {

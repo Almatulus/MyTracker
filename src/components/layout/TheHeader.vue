@@ -1,9 +1,9 @@
 <script setup>
 import { PAGE_TIMELINE } from '@/constants'
-import { currentPage, routeTo } from '@/router'
-import { scrollToCurrentHour } from '@/timelineItems'
+import { currentPage, routeTo } from '@/modules/router.js'
+import { scrollToCurrentHour } from '@/modules/timelineItems'
 import VIcon from '../ui/VIcon.vue'
-import { ICON_CLOCK } from '@/icons.js'
+import { ICON_CLOCK } from '@/modules/icons.js'
 import TheHeaderProgress from './TheHeaderProgress.vue'
 
 function handleClick() {

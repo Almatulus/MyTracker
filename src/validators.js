@@ -1,5 +1,5 @@
 import { BUTTON_TYPES, MENU_ITEMS, HOURS_PER_DAY, MIDNIGHT_HOUR } from './constants'
-import { ICONS } from './icons'
+import { ICONS } from './modules/icons'
 
 export function isPageValid(page) {
   return MENU_ITEMS.some((menuItem) => menuItem.page === page)

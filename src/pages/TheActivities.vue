@@ -2,8 +2,8 @@
 import ActivityItem from '@/components/activities/ActivityItem.vue'
 import TheActivityForm from '@/components/activities/TheActivityForm.vue'
 import TheEmptyState from '@/components/ui/TheEmptyState.vue'
-import { activities } from '@/activities'
-import { ICON_FACE_FROWN } from '@/icons'
+import { activities } from '@/modules/activities'
+import { ICON_FACE_FROWN } from '@/modules/icons'
 </script>
 
 <template>
